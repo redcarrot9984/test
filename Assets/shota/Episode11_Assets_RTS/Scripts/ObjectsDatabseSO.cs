@@ -27,7 +27,8 @@ public enum BuildingType
 {
     None,
     Muscat,
-    Mitarashi
+    Mitarashi,
+    Castle
     
 }
 
@@ -64,7 +65,13 @@ public class ObjectData
     
     [field: SerializeField]
     public List<BuildBenefits> benefits { get; private set; }
+    // ▼▼▼ 以下を追加 ▼▼▼
+    [field: Header("Unit Production")]
+    [field: SerializeField]
+    public bool IsUnit { get; private set; } = false;
 
+    [field: SerializeField]
+    public GameObject UnitPrefab { get; private set; }
   
 }
 

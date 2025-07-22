@@ -12,6 +12,8 @@ public class PlacementState : IBuildingState
     GridData floorData;
     GridData furnitureData;
     ObjectPlacer objectPlacer;
+    // ★★ チェック対象のレイヤーマスクをインスペクターから設定できるようにする ★★
+    [SerializeField] private LayerMask placementCheckMask; 
 
     public PlacementState(int iD,
                           Grid grid,
@@ -28,6 +30,9 @@ public class PlacementState : IBuildingState
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
+        
+        // ★★ レイヤーマスクを初期化（"Preview"レイヤー以外を全て含める） ★★
+        placementCheckMask = ~LayerMask.GetMask("Preview");
 
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if (selectedObjectIndex > -1)
@@ -88,11 +93,11 @@ public class PlacementState : IBuildingState
         }
         
         Vector3 worldPosition = grid.CellToWorld(gridPosition);
-        Collider[] colliders = Physics.OverlapBox(worldPosition, new Vector3(0.5f,0.5f,0.5f),Quaternion.identity);
+        Collider[] colliders = Physics.OverlapBox(worldPosition, new Vector3(0.5f,0.5f,0.5f),Quaternion.identity, placementCheckMask);
 
         foreach (var collider in colliders)
         {
-            if(collider.CompareTag("Unit") || collider.CompareTag("Building") || collider.CompareTag("Enemy"))
+            if(collider.CompareTag("Unit") || collider.CompareTag("Building") || collider.CompareTag("Enemy")|| collider.CompareTag("Castle"))
             {
                 return false;
             }

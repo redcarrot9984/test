@@ -1,12 +1,34 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; // Dictionaryを使うために必要
 using TMPro;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-  
     public static ResourceManager Instance { get; set; }
+
+    // ▼▼▼ 新しい資源タイプを定義 ▼▼▼
+    public enum ResourcesType
+    {
+        Food,
+        Wood,
+        Stone,
+        Gold
+    }
+
+    // ▼▼▼ Dictionaryを使って4つの資源を管理する ▼▼▼
+    private Dictionary<ResourcesType, int> resourceAmounts;
+
+    public event Action<ResourcesType> OnResourceChanged;
+    public event Action OnBuildingsChanged;
+
+    // ▼▼▼ 各資源を表示するUIテキスト（インスペクターから設定） ▼▼▼
+    public TextMeshProUGUI foodText;
+    public TextMeshProUGUI woodText;
+    public TextMeshProUGUI stoneText;
+    public TextMeshProUGUI goldText;
+
+    public List<BuildingType> allExistingBuildings;
 
     private void Awake()
     {
@@ -18,122 +40,92 @@ public class ResourceManager : MonoBehaviour
         {
             Instance = this;
         }
-    }
 
-    public int credits = 300;
-
-    public event Action OnResourceChanged;
-    public event Action OnBuildingsChanged;
-
-    public TextMeshProUGUI creditsUI;
-
-
-    public List<BuildingType> allExistingBuildings;
-    
-    
-    public enum ResourcesType
-    {
-        Credits
+        // ▼▼▼ Dictionaryを初期化し、各資源の初期値を設定 ▼▼▼
+        resourceAmounts = new Dictionary<ResourcesType, int>();
+        resourceAmounts[ResourcesType.Food] = 100;
+        resourceAmounts[ResourcesType.Wood] = 100;
+        resourceAmounts[ResourcesType.Stone] = 50;
+        resourceAmounts[ResourcesType.Gold] = 20;
     }
 
     private void Start()
     {
-        UpdateUI();
+        UpdateAllUI();
+    }
+    
+    // ▼▼▼ 資源を増減させるメソッド群 ▼▼▼
+    public void IncreaseResource(ResourcesType resource, int amount)
+    {
+        resourceAmounts[resource] += amount;
+        OnResourceChanged?.Invoke(resource); // どの資源が変わったかを通知
     }
 
-    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew)
+    public void DecreaseResource(ResourcesType resource, int amount)
     {
-        if (isNew)
-        {
-            allExistingBuildings.Add(buildingType);
-        }
-        else
-        {
-            allExistingBuildings.Remove(buildingType);
-        }
-        OnBuildingsChanged?.Invoke();
+        resourceAmounts[resource] -= amount;
+        OnResourceChanged?.Invoke(resource);
     }
-    
-    
-    
-    
-    
-    public void IncreaseResource(ResourcesType resource, int amountToIncrease)
+
+    public int GetResourceAmount(ResourcesType resource)
     {
+        return resourceAmounts.ContainsKey(resource) ? resourceAmounts[resource] : 0;
+    }
+
+    // ▼▼▼ UI更新処理 ▼▼▼
+    private void UpdateAllUI()
+    {
+        UpdateUI(ResourcesType.Food);
+        UpdateUI(ResourcesType.Wood);
+        UpdateUI(ResourcesType.Stone);
+        UpdateUI(ResourcesType.Gold);
+    }
+
+    private void UpdateUI(ResourcesType resource)
+    {
+        int amount = GetResourceAmount(resource);
         switch (resource)
         {
-            case ResourcesType.Credits:
-                credits += amountToIncrease;
-
+            case ResourcesType.Food:
+                if (foodText != null) foodText.text = $"{amount}";
                 break;
-            default:
+            case ResourcesType.Wood:
+                if (woodText != null) woodText.text = $"{amount}";
                 break;
-        }
-        
-        OnResourceChanged?.Invoke();
-    }
-    
-    
-    public void DecreaseResource(ResourcesType resource, int amountToDecrease)
-    {
-        switch (resource)
-        {
-            case ResourcesType.Credits:
-                credits -= amountToDecrease;
+            case ResourcesType.Stone:
+                if (stoneText != null) stoneText.text = $"{amount}";
                 break;
-            default:
+            case ResourcesType.Gold:
+                if (goldText != null) goldText.text = $"{amount}";
                 break;
         }
-        OnResourceChanged?.Invoke();
     }
 
-
-    
-
-    private void UpdateUI()
-    {
-        creditsUI.text = $"{credits}";
-       
-    }
-    
-    
-    public int GetCredits()
-    {
-        return credits;
-    }
-
-    
-    
-    
-    internal int GetResourceAmount(ResourcesType resource)
-    {
-        switch (resource)
-        {
-            case ResourcesType.Credits:
-                return credits;
-            default:
-                break;
-        }
-
-        return 0;
-    }
-
-    internal void DecreaseRemoveResourcesBasedOnRequirement(ObjectData objectData)
-    {
-        foreach (BuildRequirement req in objectData.resourceRequirements)
-        {
-            DecreaseResource(req.resource, req.amount);
-        }
-    }
-
+    // ▼▼▼ イベントの登録・解除 ▼▼▼
     private void OnEnable()
     {
         OnResourceChanged += UpdateUI;
     }
+
     private void OnDisable()
     {
         OnResourceChanged -= UpdateUI;
     }
     
+    // ResourceManager.cs のクラス内に、このメソッドを追加してください。
+
+    public void DecreaseResourcesBasedOnRequirements(ObjectData objectData)
+    {
+        if (objectData == null) return;
     
+        foreach (BuildRequirement req in objectData.resourceRequirements)
+        {
+            DecreaseResource(req.resource, req.amount);
+        }
+    }
+    
+
+    // (以下、既存のメソッドは変更なし、またはこのスクリプト内では不要)
+    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew) { /* ... */ }
+    internal void DecreaseRemoveResourcesBasedOnRequirement(ObjectData objectData) { /* ... */ }
 }

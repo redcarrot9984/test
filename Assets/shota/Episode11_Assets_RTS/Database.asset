@@ -21,9 +21,11 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 150
-    <buildDependency>k__BackingField: 
+      amount: 30
+    <buildDependency>k__BackingField: 00000000
     <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Mitarashi
     <ID>k__BackingField: 1
     <thisBuildingType>k__BackingField: 2
@@ -35,3 +37,35 @@ MonoBehaviour:
       amount: 100
     <buildDependency>k__BackingField: 01000000
     <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Castle
+    <ID>k__BackingField: 2
+    <thisBuildingType>k__BackingField: 3
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1237626119020119966, guid: d09a208d61334984f8b8fc8e4eb02aec, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 3
+      amount: 20
+    - resource: 0
+      amount: 100
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Archer
+    <ID>k__BackingField: 101
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 1
+      amount: 20
+    - resource: 0
+      amount: 100
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 8909658155784201641, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}

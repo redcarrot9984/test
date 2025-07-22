@@ -110,7 +110,8 @@ public class UnitSelectionBox : MonoBehaviour
     {
         foreach (var unit in UnitSelectionManager.Instance.allUnitsList)
         {
-            if (selectionBox.Contains(myCam.WorldToScreenPoint(unit.transform.position)))
+            // ★★ 選択対象がプレイヤーのユニット（タグが "Unit"）であるかを確認する条件を追加 ★★
+            if (unit.CompareTag("Unit") && selectionBox.Contains(myCam.WorldToScreenPoint(unit.transform.position)))
             {
                 UnitSelectionManager.Instance.DragSelect(unit);
             }

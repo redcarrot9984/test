@@ -56,9 +56,9 @@ GameObject:
   - component: {fileID: 7622131256381423713}
   - component: {fileID: 3349636554153543438}
   - component: {fileID: 4041045120391439627}
-  - component: {fileID: 2779896544182848198}
   - component: {fileID: 3583193772256058689}
   - component: {fileID: 6002295270199170026}
+  - component: {fileID: 5859776479397853173}
   m_Layer: 0
   m_Name: shine
   m_TagString: Untagged
@@ -134,20 +134,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2779896544182848198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5963219970493485115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ddf9dd5e5341f45887f5df7be8dbb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceType: 0
-  amount: 1500
 --- !u!136 &3583193772256058689
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -187,3 +173,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.002, y: 0.127, z: -0.002}
   m_TimeToStationary: 0.5
+--- !u!114 &5859776479397853173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5963219970493485115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a33ebd026537c48afd9df42671dab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 0
+  amountPerSecond: 10

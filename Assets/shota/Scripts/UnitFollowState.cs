@@ -3,45 +3,41 @@ using UnityEngine;
 public class UnitFollowState : StateMachineBehaviour
 {
     AttackController attackController;
-
     UnityEngine.AI.NavMeshAgent agent;
-    public float attackingDistance = 1f;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         attackController = animator.transform.GetComponent<AttackController>();
         agent = animator.transform.GetComponent<UnityEngine.AI.NavMeshAgent>();
         attackController.SetFollowMaterial();
+
+        // ★★ NavMeshAgentの停止距離を、そのユニットの攻撃射程に自動で設定する ★★
+        if (agent != null && attackController != null)
+        {
+            agent.stoppingDistance = attackController.attackRange;
+        }
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       //Should Unit Transition to Attack State
         if (attackController.targetToAttack == null)
         {
             animator.SetBool("isFollowing", false);
-        }else
+        }
+        else
         {
             if (animator.transform.GetComponent<UnitMovement>().isCommandedToMove == false)
             {
                 // Moving Unit towards Enemy
-                      agent.SetDestination(attackController.targetToAttack.position);
-                      animator.transform.LookAt(attackController.targetToAttack);
+                agent.SetDestination(attackController.targetToAttack.position);
+                animator.transform.LookAt(attackController.targetToAttack);
 
-                      // Shold Unit Transition to Attack State ?
-                      float distanceFromTarget = Vector3.Distance(attackController.targetToAttack.position, animator.transform.position);
-                      if (distanceFromTarget < attackingDistance)
-                      {
-                         agent.SetDestination(animator.transform.position);
-                         animator.SetBool("isAttacking", true);
-                      }
+                // NavMeshAgentが停止距離に到達したかどうかで判断する
+                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    animator.SetBool("isAttacking", true);
+                }
             }
         }
-
-
     }
-
-    
-
 }

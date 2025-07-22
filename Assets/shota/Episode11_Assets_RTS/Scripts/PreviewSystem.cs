@@ -22,6 +22,8 @@ public class PreviewSystem : MonoBehaviour
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
         previewObject = Instantiate(prefab);
+        // ★★ プレビューオブジェクトとその子オブジェクト全てのレイヤーを "Preview" に変更する処理を追加 ★★
+        SetLayerRecursively(previewObject, LayerMask.NameToLayer("Preview"));
         PreparePreview(previewObject);
     }
 
@@ -100,4 +102,19 @@ public class PreviewSystem : MonoBehaviour
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
     }
 
+    // ★★ レイヤーを再帰的に設定するためのヘルパーメソッドを追加 ★★
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (obj == null) return;
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (child == null) continue;
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
+    
+    
 }
