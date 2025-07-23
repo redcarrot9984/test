@@ -126,6 +126,31 @@ public class ResourceManager : MonoBehaviour
     
 
     // (以下、既存のメソッドは変更なし、またはこのスクリプト内では不要)
-    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew) { /* ... */ }
+    public void UpdateBuildingChanged(BuildingType buildingType, bool isNew)
+    {
+        // ★★ ここからが修正・追加箇所 ★★
+
+        if (isNew)
+        {
+            // 新しい建物がリストになければ追加する
+            if (!allExistingBuildings.Contains(buildingType))
+            {
+                allExistingBuildings.Add(buildingType);
+            }
+        }
+        else
+        {
+            // 建物が破壊された場合の処理（今回は不要ですが将来のために）
+            if (allExistingBuildings.Contains(buildingType))
+            {
+                allExistingBuildings.Remove(buildingType);
+            }
+        }
+
+        // ★★ 建物リストに変更があったことを、全てのUIボタンに通知する！ ★★
+        OnBuildingsChanged?.Invoke();
+
+        // ★★ ここまで ★★
+    }
     internal void DecreaseRemoveResourcesBasedOnRequirement(ObjectData objectData) { /* ... */ }
 }

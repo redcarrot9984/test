@@ -13,59 +13,92 @@ MonoBehaviour:
   m_Name: Database
   m_EditorClassIdentifier: 
   objectsData:
-  - <Name>k__BackingField: Muscat
-    <ID>k__BackingField: 0
-    <thisBuildingType>k__BackingField: 1
-    description: 
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
-    <resourceRequirements>k__BackingField:
-    - resource: 0
-      amount: 30
-    <buildDependency>k__BackingField: 00000000
-    <benefits>k__BackingField: []
-    <IsUnit>k__BackingField: 0
-    <UnitPrefab>k__BackingField: {fileID: 0}
-  - <Name>k__BackingField: Mitarashi
-    <ID>k__BackingField: 1
-    <thisBuildingType>k__BackingField: 2
-    description: 
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
-    <resourceRequirements>k__BackingField:
-    - resource: 0
-      amount: 100
-    <buildDependency>k__BackingField: 01000000
-    <benefits>k__BackingField: []
-    <IsUnit>k__BackingField: 0
-    <UnitPrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Castle
-    <ID>k__BackingField: 2
+    <ID>k__BackingField: 0
     <thisBuildingType>k__BackingField: 3
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 1237626119020119966, guid: d09a208d61334984f8b8fc8e4eb02aec, type: 3}
-    <resourceRequirements>k__BackingField:
-    - resource: 3
-      amount: 20
-    - resource: 0
-      amount: 100
+    <Prefab>k__BackingField: {fileID: 5572564898612289097, guid: 23fce3aa185a26e4eb33f7bad6562eb5, type: 3}
+    <resourceRequirements>k__BackingField: []
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
-  - <Name>k__BackingField: Archer
+  - <Name>k__BackingField: Farm
+    <ID>k__BackingField: 1
+    <thisBuildingType>k__BackingField: 1
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 4918221716752805702, guid: bc49ba92c389e2341a0202769e05f2f6, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 10
+    <buildDependency>k__BackingField: 03000000
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Wood
+    <ID>k__BackingField: 2
+    <thisBuildingType>k__BackingField: 2
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 7206141023515713038, guid: cc6572307dbcddb4ca4c5c6f68bf9a36, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 1
+      amount: 10
+    <buildDependency>k__BackingField: 03000000
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Stone
+    <ID>k__BackingField: 3
+    <thisBuildingType>k__BackingField: 2
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3880994920172690500, guid: d7a6224b0eebebd4e8d53aece00542de, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 1
+      amount: 10
+    <buildDependency>k__BackingField: 03000000
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: AEON
+    <ID>k__BackingField: 4
+    <thisBuildingType>k__BackingField: 5
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 2372321279257313444, guid: e7c71417ecec8514292c440bcd5c4f13, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 3
+      amount: 10
+    <buildDependency>k__BackingField: 03000000
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Home
+    <ID>k__BackingField: 5
+    <thisBuildingType>k__BackingField: 6
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 4153391560512129768, guid: b8a2d632f82fd3f4e95c424b19acbc41, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 3
+      amount: 10
+    <buildDependency>k__BackingField: 03000000
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 0
+    <UnitPrefab>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Bar
     <ID>k__BackingField: 101
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
-    - resource: 1
-      amount: 20
-    - resource: 0
-      amount: 100
+    - resource: 3
+      amount: 10
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 8909658155784201641, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 6683225326082681941, guid: 290fa6ce205dc924c8a3d917632e65ab, type: 3}

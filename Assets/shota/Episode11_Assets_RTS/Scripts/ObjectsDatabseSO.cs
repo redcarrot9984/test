@@ -27,8 +27,11 @@ public enum BuildingType
 {
     None,
     Muscat,
-    Mitarashi,
-    Castle
+    Wood,
+    Castle,
+    Stone,
+    Gold,
+    Heisha
     
 }
 

@@ -53,26 +53,49 @@ public class PlacementState : IBuildingState
 
     public void OnAction(Vector3Int gridPosition)
     {
-        // Checking if we can place this item (position not occupied)
+        // 建築可能かどうかの最終チェック
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        if (placementValidity == false)
+        if (!placementValidity)
         {
             return;
         }
 
-        int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, grid.CellToWorld(gridPosition));
+        // ★★ objectPlacerを呼び出し、設置したオブジェクトの「管理番号(index)」を受け取る ★★
+        int placedObjectIndex = objectPlacer.PlaceObject(
+            database.objectsData[selectedObjectIndex].Prefab,
+            grid.CellToWorld(gridPosition)
+        );
 
+        // ★★ 受け取った管理番号を使って、リストから実際のGameObjectを取得 ★★
+        GameObject placedObject = objectPlacer.placedGameObjects[placedObjectIndex];
+
+        // 設置が成功したかチェック
+        if (placedObject == null)
+        {
+            Debug.LogError("オブジェクトの設置に失敗しました。");
+            return;
+        }
+
+        // 設置したオブジェクトのタグが "Castle" かどうかをチェック
+        if (placedObject.CompareTag("Castle"))
+        {
+            GameManager.Instance.RegisterCastle(placedObject.transform);
+           // GameManager.castleTransform = placedObject.transform;
+            Debug.Log("<color=green>SUCCESS:</color> CastleがGameManagerに登録されました。");
+        }
+
+        // 資源を消費するなどの後続処理
         ResourceManager.Instance.DecreaseRemoveResourcesBasedOnRequirement(database.objectsData[selectedObjectIndex]);
-
         BuildingType buildingType = database.objectsData[selectedObjectIndex].thisBuildingType;
         ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
-        // If this id is a floor id, then its a floor data, else its a furniture data
+
         GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
-       
+
+        // ★★ GridDataへの登録には、受け取った管理番号をそのまま使う ★★
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
-            index);
+            placedObjectIndex); // ここが重要！
 
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
