@@ -1,4 +1,5 @@
-using System.Collections;
+// Code/PlacementState.cs
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,7 @@ public class PlacementState : IBuildingState
     GridData floorData;
     GridData furnitureData;
     ObjectPlacer objectPlacer;
-    // ★★ チェック対象のレイヤーマスクをインスペクターから設定できるようにする ★★
-    [SerializeField] private LayerMask placementCheckMask; 
+    private LayerMask placementCheckMask; 
 
     public PlacementState(int iD,
                           Grid grid,
@@ -31,7 +31,6 @@ public class PlacementState : IBuildingState
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
         
-        // ★★ レイヤーマスクを初期化（"Preview"レイヤー以外を全て含める） ★★
         placementCheckMask = ~LayerMask.GetMask("Preview");
 
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
@@ -53,36 +52,42 @@ public class PlacementState : IBuildingState
 
     public void OnAction(Vector3Int gridPosition)
     {
-        // 建築可能かどうかの最終チェック
+        // ▼▼▼ ここからが診断箇所 ▼▼▼
+        Debug.Log("--- PlacementState: OnAction called ---"); // 1. メソッドが呼ばれたか
+
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (!placementValidity)
         {
+            Debug.LogWarning("Placement was not valid. Aborting."); // 設置場所が不正
             return;
         }
-
-        // ★★ objectPlacerを呼び出し、設置したオブジェクトの「管理番号(index)」を受け取る ★★
+        
         int placedObjectIndex = objectPlacer.PlaceObject(
             database.objectsData[selectedObjectIndex].Prefab,
             grid.CellToWorld(gridPosition)
         );
-
-        // ★★ 受け取った管理番号を使って、リストから実際のGameObjectを取得 ★★
+        
         GameObject placedObject = objectPlacer.placedGameObjects[placedObjectIndex];
 
-        // 設置が成功したかチェック
         if (placedObject == null)
         {
-            Debug.LogError("オブジェクトの設置に失敗しました。");
+            Debug.LogError("CRITICAL: placedObject is NULL. Check ObjectPlacer.cs"); // 2. オブジェクトが取得できたか
             return;
         }
 
-        // 設置したオブジェクトのタグが "Castle" かどうかをチェック
+        Debug.Log("Placed Object Name: " + placedObject.name + " | Tag: " + placedObject.tag); // 3. オブジェクトの名前とタグを確認
+
         if (placedObject.CompareTag("Castle"))
         {
+            Debug.Log("<color=green>SUCCESS:</color> Tag matched! Calling RegisterCastle..."); // 4. タグが一致したか
             GameManager.Instance.RegisterCastle(placedObject.transform);
-           // GameManager.castleTransform = placedObject.transform;
-            Debug.Log("<color=green>SUCCESS:</color> CastleがGameManagerに登録されました。");
         }
+        else
+        {
+            Debug.LogError("FAILED: Tag did NOT match 'Castle'. Please check the prefab's tag."); // 5. タグが一致しなかった場合
+        }
+        // ▲▲▲ ここまで ▲▲▲
+
 
         // 資源を消費するなどの後続処理
         ResourceManager.Instance.DecreaseRemoveResourcesBasedOnRequirement(database.objectsData[selectedObjectIndex]);
@@ -90,20 +95,18 @@ public class PlacementState : IBuildingState
         ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
 
         GridData selectedData = GetAllFloorIDs().Contains(database.objectsData[selectedObjectIndex].ID) ? floorData : furnitureData;
-
-        // ★★ GridDataへの登録には、受け取った管理番号をそのまま使う ★★
+        
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
-            placedObjectIndex); // ここが重要！
+            placedObjectIndex);
 
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
 
-    // When you have more floor objects add their id here
     private List<int> GetAllFloorIDs()
     {
-        return new List<int> { 11 }; // These are all the ids of floor items - For now its only the grass
+        return new List<int> { 11 };
     }
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
@@ -125,16 +128,12 @@ public class PlacementState : IBuildingState
                 return false;
             }
         }
-
-
         return true;
     }
 
     public void UpdateState(Vector3Int gridPosition)
     {
-        // Show the player if he can place the item
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
     }
 }

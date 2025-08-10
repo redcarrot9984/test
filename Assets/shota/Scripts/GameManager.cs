@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     private Transform castleTransform;
 
     public GameObject gameOverPanel;
+    public GameObject gameClearPanel;
+    // ★★ WaveManagerへの参照を追加 ★★
+    public WaveManager waveManager;
 
     private void Awake()
     {
@@ -28,8 +31,20 @@ public class GameManager : MonoBehaviour
     public void RegisterCastle(Transform newCastleTransform)
     {
         castleTransform = newCastleTransform;
+     
         Debug.Log("<color=cyan>GAMEMANAGER:</color> Castle has been registered by placement system!");
+        
+        // ★★ 城が登録されたら、WaveManagerを開始させる ★★
+        if (waveManager != null)
+        {
+            waveManager.StartWaves();
+        }
+        else
+        {
+            Debug.LogError("WaveManager is not assigned in the GameManager inspector!");
+        }
     }
+    
 
     // EnemyAI が城の場所を知るために呼び出すメソッド
     public Transform GetCastleTransform()
@@ -62,11 +77,25 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
     }
-
+    public void GameClear()
+    {
+        Debug.Log("GAME CLEAR - called");
+        if (gameClearPanel != null)
+        {
+            gameClearPanel.SetActive(true);
+        }
+        Time.timeScale = 0f;
+    }
     // ゲームリスタート処理
     public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void BackToTitle()
+    {
+        Time.timeScale = 1f;
+        // 必ず自分のタイトルシーン名に書き換えてください
+        SceneManager.LoadScene("TitleScene"); 
     }
 }

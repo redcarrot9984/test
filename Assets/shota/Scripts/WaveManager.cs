@@ -1,7 +1,10 @@
+// Code/WaveManager.cs
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class Wave
@@ -21,119 +24,166 @@ public class WaveManager : MonoBehaviour
     public float timeBetweenWaves = 30f;
 
     [Header("参照するオブジェクト")]
-    public Transform spawnPoint;
     public TextMeshProUGUI nextWaveCountdownText;
-
+    
+    [Header("敵の出現範囲")]
+    public float spawnRadius = 50f;
+    
     private int currentWaveIndex = -1;
     private float countdown;
     private WaveState currentState = WaveState.COUNTING_DOWN;
-
-    // ★★ 生き残っている敵の数をカウントするリスト ★★
+    
     private List<GameObject> aliveEnemies = new List<GameObject>();
 
     private enum WaveState
     {
         SPAWNING,
         WAITING,
-        COUNTING_DOWN
+        COUNTING_DOWN,
+        ALL_WAVES_CLEARED
     }
-
+    private bool wavesActive = false; 
+    
     void Start()
     {
+        if (nextWaveCountdownText != null)
+        {
+            nextWaveCountdownText.text = "Build a Castle to begin";
+        }
+    }
+    
+    public void StartWaves()
+    {
+        if (wavesActive) return;
+
+        wavesActive = true;
         countdown = timeBetweenWaves;
-        UpdateCountdownUI();
+        currentState = WaveState.COUNTING_DOWN;
+        Debug.Log("Wave system has been activated by GameManager.");
     }
 
     void Update()
     {
-        // 状態がカウントダウン中の場合
+        if (!wavesActive)
+        {
+            return;
+        }
+
         if (currentState == WaveState.COUNTING_DOWN)
         {
             countdown -= Time.deltaTime;
-            UpdateCountdownUI();
             if (countdown <= 0)
             {
                 StartNextWave();
             }
         }
-        // ★★ Waveの敵が全滅するのを待機中の場合 ★★
         else if (currentState == WaveState.WAITING)
         {
-            // 生き残りの敵がいなくなったかチェックする
             if (AllEnemiesDefeated())
             {
-                // 次のWaveへのカウントダウンを開始する
                 StartCountdown();
             }
         }
+        
+        UpdateWaveStatusUI();
     }
 
     void StartNextWave()
     {
-        // Wave番号を次に進める
         currentWaveIndex++;
-        // ★★ 状態を「生成中」に変更 ★★
         currentState = WaveState.SPAWNING;
-
         Debug.Log("Wave " + (currentWaveIndex + 1) + " を開始します！");
-
-        // ★★ 現在のWave情報を元に、敵の生成コルーチンを開始 ★★
         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
     }
-
-    // ★★ 敵を生成するコルーチン（非同期処理）★★
+    
     IEnumerator SpawnWave(Wave wave)
     {
-        // Waveに設定された数の敵を一体ずつ生成
         for (int i = 0; i < wave.enemyCount; i++)
         {
-            GameObject enemyInstance = Instantiate(wave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-            // ★★ 生成した敵をリストに追加 ★★
+            Vector3 spawnPosition = GetRandomSpawnPosition();
+            if(spawnPosition == Vector3.zero)
+            {
+                Debug.LogError("Failed to find a valid spawn position on the NavMesh.");
+                yield return null;
+                i--;
+                continue;
+            }
+
+            GameObject enemyInstance = Instantiate(wave.enemyPrefab, spawnPosition, Quaternion.identity);
             aliveEnemies.Add(enemyInstance);
             
-            // 設定された時間だけ待機
             yield return new WaitForSeconds(wave.spawnInterval);
         }
 
-        // 全ての敵を生成し終えたら、状態を「待機中」に変更
         currentState = WaveState.WAITING;
-        // このWaveの生成処理は完了
         yield break;
     }
-
-    // ★★ 次のWaveへのカウントダウンを開始する処理 ★★
+    
     void StartCountdown()
     {
-        // 全てのWaveをクリアした場合
         if (currentWaveIndex >= waves.Count - 1)
         {
             Debug.Log("全てのWaveをクリアしました！ゲームクリア！");
-            // TODO: ゲームクリア処理を呼び出す
-            enabled = false; // WaveManagerを停止
+            currentState = WaveState.ALL_WAVES_CLEARED;
+            GameManager.Instance.GameClear();
+            enabled = false; 
             return;
         }
 
         currentState = WaveState.COUNTING_DOWN;
         countdown = timeBetweenWaves;
     }
-
-    // ★★ 全ての敵が倒されたかチェックする処理 ★★
+    
     bool AllEnemiesDefeated()
     {
-        // リスト内のnull（破壊されたオブジェクト）を掃除する
         aliveEnemies.RemoveAll(enemy => enemy == null);
-        // リストの数が0になれば、敵は全滅したと判断
         return aliveEnemies.Count == 0;
     }
 
-
-    void UpdateCountdownUI()
+    void UpdateWaveStatusUI()
     {
-        if (nextWaveCountdownText != null)
+        if (nextWaveCountdownText == null) return;
+
+        switch (currentState)
         {
-            int minutes = Mathf.FloorToInt(countdown / 60);
-            int seconds = Mathf.FloorToInt(countdown % 60);
-            nextWaveCountdownText.text = $"Next Wave: {minutes:00}:{seconds:00}";
+            case WaveState.COUNTING_DOWN:
+                int minutes = Mathf.FloorToInt(countdown / 60);
+                int seconds = Mathf.FloorToInt(countdown % 60);
+                nextWaveCountdownText.text = $"Next Wave: {minutes:00}:{seconds:00}";
+                break;
+                
+            case WaveState.SPAWNING:
+            case WaveState.WAITING:
+                aliveEnemies.RemoveAll(enemy => enemy == null);
+                nextWaveCountdownText.text = $"Enemies: {aliveEnemies.Count}";
+                break;
+
+            case WaveState.ALL_WAVES_CLEARED:
+                nextWaveCountdownText.text = "All Waves Cleared!";
+                break;
         }
+    }
+
+    // ★★ このメソッドをクラスの直下に移動しました ★★
+    private Vector3 GetRandomSpawnPosition()
+    {
+        Transform castleTransform = GameManager.Instance.GetCastleTransform();
+        if (castleTransform == null)
+        {
+            Debug.LogError("Cannot find Castle Transform!");
+            return Vector3.zero;
+        }
+
+        Vector3 randomDirection = Random.insideUnitSphere * spawnRadius;
+        randomDirection += castleTransform.position;
+        randomDirection.y = castleTransform.position.y;
+
+        NavMeshHit navHit;
+        if (NavMesh.SamplePosition(randomDirection, out navHit, spawnRadius, -1))
+        {
+            return navHit.position;
+        }
+
+        return Vector3.zero;
     }
 }

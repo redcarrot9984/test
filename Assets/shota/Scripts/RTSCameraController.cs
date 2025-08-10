@@ -36,6 +36,13 @@ public class RTSCameraController : MonoBehaviour
     public Texture2D cursorArrowLeft;
     public Texture2D cursorArrowRight;
 
+    // ▼▼▼ ここからズーム用の変数を追加 ▼▼▼
+    [Header("Zoom")]
+    [SerializeField] float zoomSpeed = 5f; // ズームの速さ
+    [SerializeField] float minY = 15f;     // 最もズームインした時の高さ
+    [SerializeField] float maxY = 100f;    // 最もズームアウトした時の高さ
+    // ▲▲▲ ここまで追加 ▲▲▲
+    
     CursorArrow currentCursor = CursorArrow.DEFAULT;
     enum CursorArrow
     {
@@ -156,7 +163,16 @@ public class RTSCameraController : MonoBehaviour
                 }
             }
         }
-
+        // ▼▼▼ ここからズーム処理を追加 ▼▼▼
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            // マウススクロールの入力値にzoomSpeedを掛けて、Y座標を更新
+            newPosition.y -= Input.mouseScrollDelta.y * zoomSpeed;
+            
+            // Y座標がminYとmaxYの範囲内に収まるように制限（クランプ）
+            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+        }
+        // ▲▲▲ ここまで追加 ▲▲▲
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSensitivity);
 
         Cursor.lockState = CursorLockMode.Confined; // If we have an extra monitor we don't want to exit screen bounds
