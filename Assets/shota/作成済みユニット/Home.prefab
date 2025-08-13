@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1385595a4af4e994980c61ecf4a97a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 6
   producibleUnitIDs: 65000000
   spawnPoint: {fileID: 1039878991604312570}
 --- !u!1 &4153391560512129768

@@ -36,10 +36,26 @@ public class BuySlot : MonoBehaviour
 
    public void ClickedOnSlot()
    {
-      if (isAvailable)
-      {
-         buySystem.placementSystem.StartPlacement(databaseItemID);
-      }
+       if (!isAvailable) return;
+
+       // ▼▼▼ ここから修正 ▼▼▼
+
+       // 1. データベースからこのスロットのオブジェクト情報を取得
+       ObjectData objectData = DatabaseManager.Instance.databaseSO.GetObjectByID(databaseItemID);
+
+       // 2. それがユニットかどうかを判定
+       if (objectData.IsUnit)
+       {
+           // ★ユニットの場合：新しく作ったUnitProductionCoordinatorを呼び出す
+           UnitProductionCoordinator.Instance.ProduceUnit(databaseItemID);
+       }
+       else
+       {
+           // ★建物の場合：これまで通りPlacementSystemを呼び出す
+           buySystem.placementSystem.StartPlacement(databaseItemID);
+       }
+    
+       // ▲▲▲ ここまで修正 ▲▲▲
    }
 
     // ▼▼▼ 以下のメソッドを全面的に修正 ▼▼▼

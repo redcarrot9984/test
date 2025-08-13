@@ -76,6 +76,10 @@ public class ObjectData
     [field: SerializeField]
     public GameObject UnitPrefab { get; private set; }
   
+    // ▼▼▼ このフィールドを追加 ▼▼▼
+    [field: Tooltip("このユニットを生産するために必要な建物の種類")]
+    [field: SerializeField]
+    public BuildingType producingBuilding { get; private set; } = BuildingType.None;
 }
 
 [System.Serializable]

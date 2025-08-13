@@ -24,6 +24,7 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: Farm
     <ID>k__BackingField: 1
     <thisBuildingType>k__BackingField: 1
@@ -37,6 +38,7 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: Wood
     <ID>k__BackingField: 2
     <thisBuildingType>k__BackingField: 2
@@ -50,6 +52,7 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: Stone
     <ID>k__BackingField: 3
     <thisBuildingType>k__BackingField: 2
@@ -63,6 +66,7 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: AEON
     <ID>k__BackingField: 4
     <thisBuildingType>k__BackingField: 5
@@ -76,12 +80,13 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: Home
     <ID>k__BackingField: 5
     <thisBuildingType>k__BackingField: 6
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 4153391560512129768, guid: b8a2d632f82fd3f4e95c424b19acbc41, type: 3}
+    <Prefab>k__BackingField: {fileID: 348707351167713971, guid: b589b43fe8afecb4fb5cd941d4159e2a, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 3
       amount: 10
@@ -89,6 +94,7 @@ MonoBehaviour:
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
   - <Name>k__BackingField: Bar
     <ID>k__BackingField: 101
     <thisBuildingType>k__BackingField: 0
@@ -96,9 +102,10 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
-    - resource: 3
+    - resource: 0
       amount: 10
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
     <UnitPrefab>k__BackingField: {fileID: 6683225326082681941, guid: 290fa6ce205dc924c8a3d917632e65ab, type: 3}
+    <producingBuilding>k__BackingField: 6

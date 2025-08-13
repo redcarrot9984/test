@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class UnitProducer : MonoBehaviour
 {
+    // ▼▼▼ このフィールドを追加 ▼▼▼
+    [Header("建物の種類")]
+    public BuildingType buildingType;
     // この建物が生産できるユニットのIDリスト
     [SerializeField]
     private List<int> producibleUnitIDs = new List<int>();

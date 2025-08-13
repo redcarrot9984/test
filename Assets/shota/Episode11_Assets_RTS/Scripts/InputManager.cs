@@ -94,7 +94,10 @@ public class InputManager : MonoBehaviour
        {
            Debug.Log("レイキャスト成功: '" + hit.collider.name + "' というオブジェクト（Buildingレイヤー）にヒットしました。");
 
+           // UnitProducerを持っているか試す
            UnitProducer producer = hit.collider.GetComponentInParent<UnitProducer>();
+           
+           // producerがnullでなければ（＝生産機能を持つ建物なら）選択処理を行う
            if (producer != null)
            {
                Debug.Log("成功: UnitProducerを発見しました。建物を選択します。");
@@ -102,10 +105,8 @@ public class InputManager : MonoBehaviour
                buildingSelector.SelectBuilding(producer.gameObject);
                return; // 建物選択が成功したので、ここで処理を終了
            }
-           else
-           {
-               Debug.LogError("エラー: Buildingレイヤーのオブジェクトにヒットしましたが、UnitProducerスクリプトが見つかりません。");
-           }
+           
+           // producerがnullの場合（＝生産機能を持たない建物）は、エラーを出さずに何もしない
        }
        else
        {
