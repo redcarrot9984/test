@@ -1,3 +1,5 @@
+// code/RTSCameraController.cs (全体を書き換え)
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,76 +7,59 @@ public class RTSCameraController : MonoBehaviour
 {
     public static RTSCameraController instance;
 
-    // If we want to select an item to follow, inside the item script add:
-    // public void OnMouseDown(){
-    //   CameraController.instance.followTransform = transform;
-    // }
-
     [Header("General")]
     [SerializeField] Transform cameraTransform;
     public Transform followTransform;
-    Vector3 newPosition;
-    Vector3 dragStartPosition;
-    Vector3 dragCurrentPosition;
+
+    private Vector3 dragStartPosition;
+    private Vector3 dragCurrentPosition;
 
     [Header("Optional Functionality")]
-    [SerializeField] bool moveWithKeyboad;
-    [SerializeField] bool moveWithEdgeScrolling;
-    [SerializeField] bool moveWithMouseDrag;
+    [SerializeField] bool moveWithKeyboad = true;
+    [SerializeField] bool moveWithEdgeScrolling = true;
+    [SerializeField] bool moveWithMouseDrag = true;
 
-    [Header("Keyboard Movement")]
-    [SerializeField] float fastSpeed = 0.05f;
-    [SerializeField] float normalSpeed = 0.01f;
-    [SerializeField] float movementSensitivity = 1f; // Hardcoded Sensitivity
-    float movementSpeed;
-
-    [Header("Edge Scrolling Movement")]
+    [Header("Movement Speeds")]
+    [Tooltip("通常時のカメラ移動速度")]
+    [SerializeField] float normalSpeed = 20f;
+    [Tooltip("Shiftキーを押したときの高速移動速度")]
+    [SerializeField] float fastSpeed = 40f;
+    
+    [Header("Edge Scrolling")]
     [SerializeField] float edgeSize = 50f;
-    bool isCursorSet = false;
+
+    [Header("Zoom")]
+    [SerializeField] float zoomSpeed = 20f;
+    [SerializeField] float minY = 15f;
+    [SerializeField] float maxY = 100f;
+    
+    // カーソル関連の変数は変更なし
+    private bool isCursorSet = false;
     public Texture2D cursorArrowUp;
     public Texture2D cursorArrowDown;
     public Texture2D cursorArrowLeft;
     public Texture2D cursorArrowRight;
+    private CursorArrow currentCursor = CursorArrow.DEFAULT;
+    enum CursorArrow { UP, DOWN, LEFT, RIGHT, DEFAULT }
 
-    // ▼▼▼ ここからズーム用の変数を追加 ▼▼▼
-    [Header("Zoom")]
-    [SerializeField] float zoomSpeed = 5f; // ズームの速さ
-    [SerializeField] float minY = 15f;     // 最もズームインした時の高さ
-    [SerializeField] float maxY = 100f;    // 最もズームアウトした時の高さ
-    // ▲▲▲ ここまで追加 ▲▲▲
-    
-    CursorArrow currentCursor = CursorArrow.DEFAULT;
-    enum CursorArrow
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        DEFAULT
-    }
-
-    private void Start()
+    private void Awake() // StartからAwakeに変更
     {
         instance = this;
-
-        newPosition = transform.position;
-
-        movementSpeed = normalSpeed;
     }
 
     private void Update()
     {
-        // Allow Camera to follow Target
+        // 追従対象がいる場合は何もしない
         if (followTransform != null)
         {
             transform.position = followTransform.position;
-        }
-        // Let us control Camera
-        else
-        {
-            HandleCameraMovement();
+            return;
         }
 
+        // カメラ操作のメイン処理を呼び出す
+        HandleCameraMovement();
+        
+        // 追従を解除する
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             followTransform = null;
@@ -83,158 +68,118 @@ public class RTSCameraController : MonoBehaviour
 
     void HandleCameraMovement()
     {
-        // Mouse Drag
+        // 現在のフレームで適用する移動量を計算するベクトル
+        Vector3 move = Vector3.zero;
+        
+        // 現在の速度を決定 (Shiftキーで高速化)
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+
+        // --- キーボード入力 ---
+        if (moveWithKeyboad)
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+                move += transform.forward;
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+                move -= transform.forward;
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                move += transform.right;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                move -= transform.right;
+        }
+
+        // --- 画面端スクロール ---
+        if (moveWithEdgeScrolling)
+        {
+            if (Input.mousePosition.x > Screen.width - edgeSize)
+            {
+                move += transform.right;
+                ChangeCursor(CursorArrow.RIGHT);
+            }
+            else if (Input.mousePosition.x < edgeSize)
+            {
+                move -= transform.right;
+                ChangeCursor(CursorArrow.LEFT);
+            }
+            else if (Input.mousePosition.y > Screen.height - edgeSize)
+            {
+                move += transform.forward;
+                ChangeCursor(CursorArrow.UP);
+            }
+            else if (Input.mousePosition.y < edgeSize)
+            {
+                move -= transform.forward;
+                ChangeCursor(CursorArrow.DOWN);
+            }
+            else
+            {
+                ChangeCursor(CursorArrow.DEFAULT);
+            }
+        }
+        
+        // 計算した移動量をカメラの位置に直接反映
+        // move.normalizedで斜め移動が速くなるのを防ぐ
+        transform.position += move.normalized * currentSpeed * Time.deltaTime;
+
+        // --- ズーム処理 ---
+        float scrollInput = Input.mouseScrollDelta.y;
+        if (scrollInput != 0)
+        {
+            Vector3 pos = transform.position;
+            pos.y -= scrollInput * zoomSpeed;
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            transform.position = pos; // ズームも直接反映
+        }
+        
+        // --- マウスドラッグ移動 ---
         if (moveWithMouseDrag)
         {
             HandleMouseDragInput();
         }
 
-        // Keyboard Control
-        if (moveWithKeyboad)
-        {
-            if (Input.GetKey(KeyCode.LeftCommand))
-            {
-                movementSpeed = fastSpeed;
-            }
-            else
-            {
-                movementSpeed = normalSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                newPosition += (transform.forward * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                newPosition += (transform.forward * -movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                newPosition += (transform.right * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                newPosition += (transform.right * -movementSpeed);
-            }
-        }
-
-        // Edge Scrolling
-        if (moveWithEdgeScrolling)
-        {
-
-            // Move Right
-            if (Input.mousePosition.x > Screen.width - edgeSize)
-            {
-                newPosition += (transform.right * movementSpeed);
-                ChangeCursor(CursorArrow.RIGHT);
-                isCursorSet = true;
-            }
-
-            // Move Left
-            else if (Input.mousePosition.x < edgeSize)
-            {
-                newPosition += (transform.right * -movementSpeed);
-                ChangeCursor(CursorArrow.LEFT);
-                isCursorSet = true;
-            }
-
-            // Move Up
-            else if (Input.mousePosition.y > Screen.height - edgeSize)
-            {
-                newPosition += (transform.forward * movementSpeed);
-                ChangeCursor(CursorArrow.UP);
-                isCursorSet = true;
-            }
-
-            // Move Down
-            else if (Input.mousePosition.y < edgeSize)
-            {
-                newPosition += (transform.forward * -movementSpeed);
-                ChangeCursor(CursorArrow.DOWN);
-                isCursorSet = true;
-            }
-            else
-            {
-                if (isCursorSet)
-                {
-                    ChangeCursor(CursorArrow.DEFAULT);
-                    isCursorSet = false;
-                }
-            }
-        }
-        // ▼▼▼ ここからズーム処理を追加 ▼▼▼
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            // マウススクロールの入力値にzoomSpeedを掛けて、Y座標を更新
-            newPosition.y -= Input.mouseScrollDelta.y * zoomSpeed;
-            
-            // Y座標がminYとmaxYの範囲内に収まるように制限（クランプ）
-            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
-        }
-        // ▲▲▲ ここまで追加 ▲▲▲
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSensitivity);
-
-        Cursor.lockState = CursorLockMode.Confined; // If we have an extra monitor we don't want to exit screen bounds
+        // カーソルが画面外に出ないようにする
+        Cursor.lockState = CursorLockMode.Confined;
     }
-
-    private void ChangeCursor(CursorArrow newCursor)
-    {
-        // Only change cursor if its not the same cursor
-        if (currentCursor != newCursor)
-        {
-            switch (newCursor)
-            {
-                case CursorArrow.UP:
-                    Cursor.SetCursor(cursorArrowUp, Vector2.zero, CursorMode.Auto);
-                    break;
-                case CursorArrow.DOWN:
-                    Cursor.SetCursor(cursorArrowDown, new Vector2(cursorArrowDown.width, cursorArrowDown.height), CursorMode.Auto); // So the Cursor will stay inside view
-                    break;
-                case CursorArrow.LEFT:
-                    Cursor.SetCursor(cursorArrowLeft, Vector2.zero, CursorMode.Auto);
-                    break;
-                case CursorArrow.RIGHT:
-                    Cursor.SetCursor(cursorArrowRight, new Vector2(cursorArrowRight.width, cursorArrowRight.height), CursorMode.Auto); // So the Cursor will stay inside view
-                    break;
-                case CursorArrow.DEFAULT:
-                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                    break;
-            }
-
-            currentCursor = newCursor;
-        }
-    }
-
-
-
+    
+    // マウスドラッグのロジックは newPosition を使わないように変更
     private void HandleMouseDragInput()
     {
-        if (Input.GetMouseButtonDown(2) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetMouseButtonDown(2) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            Plane plane = new Plane(Vector3.up, 0);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            float entry;
-
-            if (plane.Raycast(ray, out entry))
+            if (plane.Raycast(ray, out float entry))
             {
                 dragStartPosition = ray.GetPoint(entry);
             }
         }
-        if (Input.GetMouseButton(2) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetMouseButton(2) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            Plane plane = new Plane(Vector3.up, 0);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            float entry;
-
-            if (plane.Raycast(ray, out entry))
+            if (plane.Raycast(ray, out float entry))
             {
                 dragCurrentPosition = ray.GetPoint(entry);
-
-                newPosition = transform.position + dragStartPosition - dragCurrentPosition;
+                // 現在位置に差分を直接加える
+                transform.position += dragStartPosition - dragCurrentPosition;
             }
         }
+    }
+    
+    // ChangeCursorメソッドは変更なし
+    private void ChangeCursor(CursorArrow newCursor)
+    {
+        if (currentCursor == newCursor) return;
+        
+        isCursorSet = newCursor != CursorArrow.DEFAULT;
+
+        switch (newCursor)
+        {
+            case CursorArrow.UP:    Cursor.SetCursor(cursorArrowUp, Vector2.zero, CursorMode.Auto); break;
+            case CursorArrow.DOWN:  Cursor.SetCursor(cursorArrowDown, new Vector2(cursorArrowDown.width, cursorArrowDown.height), CursorMode.Auto); break;
+            case CursorArrow.LEFT:  Cursor.SetCursor(cursorArrowLeft, Vector2.zero, CursorMode.Auto); break;
+            case CursorArrow.RIGHT: Cursor.SetCursor(cursorArrowRight, new Vector2(cursorArrowRight.width, cursorArrowRight.height), CursorMode.Auto); break;
+            default:                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); break;
+        }
+        currentCursor = newCursor;
     }
 }

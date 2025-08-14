@@ -1445,17 +1445,16 @@ MonoBehaviour:
   moveWithKeyboad: 1
   moveWithEdgeScrolling: 0
   moveWithMouseDrag: 0
-  fastSpeed: 1
-  normalSpeed: 0.2
-  movementSensitivity: 0.3
+  normalSpeed: 20
+  fastSpeed: 40
   edgeSize: 50
+  zoomSpeed: 2
+  minY: 1
+  maxY: 100
   cursorArrowUp: {fileID: 2800000, guid: 61039086f195b674eb81fe853a99834e, type: 3}
   cursorArrowDown: {fileID: 2800000, guid: add0161595eb8a34fa48eeb85c2ba0df, type: 3}
   cursorArrowLeft: {fileID: 2800000, guid: abdf8b6b535e1b843af78dd6072a8c05, type: 3}
   cursorArrowRight: {fileID: 2800000, guid: 51c005033cbc9dc4c9f89a35053c4227, type: 3}
-  zoomSpeed: 2
-  minY: 1
-  maxY: 100
 --- !u!1 &425856879
 GameObject:
   m_ObjectHideFlags: 0
