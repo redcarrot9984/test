@@ -3101,7 +3101,7 @@ MonoBehaviour:
     enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
     enemyCount: 5
     spawnInterval: 6
-  timeBetweenWaves: 3
+  timeBetweenWaves: 10
   nextWaveCountdownText: {fileID: 331248238}
   spawnRadius: 50
 --- !u!1 &937021607
@@ -6272,15 +6272,15 @@ PrefabInstance:
       objectReference: {fileID: 2144265514}
     - target: {fileID: 4899337885597815059, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4899337885597815059, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4899337885597815059, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7039055840358309508, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6328,15 +6328,19 @@ PrefabInstance:
       objectReference: {fileID: 2144265514}
     - target: {fileID: 8818182725086766998, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8818182725086766998, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8909658155784201641, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
       propertyPath: m_Name
       value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909658155784201641, guid: bc86ff0cc3e2a944aab8743e41f06d55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6353,11 +6357,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 227128345014164990, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 227128345014164990, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 562336634479246046, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6401,15 +6405,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4232090246602189691, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4232090246602189691, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4232090246602189691, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5996768430561374370, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: facingCamera
@@ -6418,6 +6422,10 @@ PrefabInstance:
     - target: {fileID: 7210461178501854889, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: m_Name
       value: Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210461178501854889, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8073305690107964311, guid: 8c92a7d5839813941a05aab0b9e81661, type: 3}
       propertyPath: mainCamera

@@ -1,74 +1,81 @@
-// Unit.cs
+// code/Unit.cs
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Unit : MonoBehaviour
 {
-    private float unitHealth;
-    public float unitMaxHealth;
+    [Tooltip("このユニットのデータベース上のID")]
+    [SerializeField]
+    private int databaseID; 
+    public ObjectData unitData { get; private set; }
+
+    private float currentHealth;
     private GameManager gameManager;
-
     public HealthTracker healthTracker;
-
-    // ★★ これが建物かどうかを判定するフラグを追加 ★★
     public bool isBuilding = false;
+
+    void Awake()
+    {
+        // データベースから自身の全データを取得
+        unitData = DatabaseManager.Instance.databaseSO.GetObjectByID(databaseID);
+        if (unitData == null)
+        {
+            Debug.LogError($"{gameObject.name} : ID {databaseID} のデータがデータベースに見つかりません！", this);
+            return;
+        }
+
+        // 体力をデータベースの値で初期化
+        currentHealth = unitData.MaxHealth;
+    }
 
     void Start()
     {
-        // ★★ シーン内のGameManagerを検索して保持しておく ★★
         gameManager = FindObjectOfType<GameManager>();
-        // ★★ 建物でない場合のみ、選択リストに追加する ★★
+        
+        // 建物でない場合のみ、選択リストに追加する
         if (!isBuilding && UnitSelectionManager.Instance != null)
         {
             UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
         }
 
-        unitHealth = unitMaxHealth;
         UpdateHealthUI();
     }
 
     private void OnDestroy()
     {
-        if(UnitSelectionManager.Instance != null)
+        if(UnitSelectionManager.Instance != null && !isBuilding)
         {
-            if (!isBuilding) // 建物でない場合のみ
-            {
-                UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
-                UnitSelectionManager.Instance.unitsSelected.Remove(gameObject);
-            }
+            UnitSelectionManager.Instance.allUnitsList.Remove(gameObject);
+            UnitSelectionManager.Instance.unitsSelected.Remove(gameObject);
         }
+    }
+
+    public void TakeDamage(int damageToInflict)
+    {
+        currentHealth -= damageToInflict;
+        UpdateHealthUI();
     }
 
     private void UpdateHealthUI()
     {
         if (healthTracker != null)
         {
-            healthTracker.UpdateSliderValue(unitHealth, unitMaxHealth);
+            // 体力バーを更新
+            healthTracker.UpdateSliderValue(currentHealth, unitData.MaxHealth);
         }
 
-        if (unitHealth <= 0)
+        if (currentHealth <= 0)
         {
-            // ★★ もしこのオブジェクトがお城なら、ゲームオーバー処理を呼び出す（後で実装） ★★
+            // 城ならゲームオーバー
             if (isBuilding && CompareTag("Castle"))
             {
                 if (gameManager != null)
                 {
                     gameManager.GameOver();
                 }
-                Debug.Log("GAME OVER"); // とりあえずログを出す
-                // FindObjectOfType<GameManager>().GameOver(); // 最終形
             }
             
             Destroy(gameObject);
         }
-    }
-
-    internal void TakeDamage(int damageToInflict)
-    {
-        unitHealth -= damageToInflict;
-        UpdateHealthUI();
     }
 }

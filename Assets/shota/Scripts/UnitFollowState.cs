@@ -1,19 +1,26 @@
-// Code/UnitFollowState.cs
+// code/UnitFollowState.cs
 
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UnitFollowState : StateMachineBehaviour
 {
-    AttackController attackController;
-    UnityEngine.AI.NavMeshAgent agent;
+    private AttackController attackController;
+    private NavMeshAgent agent;
+    private Unit unit;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        attackController = animator.transform.GetComponent<AttackController>();
-        agent = animator.transform.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        attackController = animator.GetComponent<AttackController>();
+        agent = animator.GetComponent<NavMeshAgent>();
+        unit = animator.GetComponent<Unit>();
+        
         attackController.SetFollowMaterial();
 
-        if (agent != null && attackController != null && attackController.targetToAttack != null)
+        if (agent == null || attackController == null || unit == null || unit.unitData == null) return;
+
+        // ターゲットが建物かどうかで停止距離を調整
+        if (attackController.targetToAttack != null)
         {
             Unit targetUnit = attackController.targetToAttack.GetComponent<Unit>();
             if (targetUnit != null && targetUnit.isBuilding)
@@ -22,50 +29,45 @@ public class UnitFollowState : StateMachineBehaviour
                 if (targetCollider != null)
                 {
                     float buildingRadius = Mathf.Max(targetCollider.bounds.extents.x, targetCollider.bounds.extents.z);
-                    agent.stoppingDistance = buildingRadius + attackController.attackRange;
-                }
-                else
-                {
-                    agent.stoppingDistance = attackController.attackRange + 5f; 
+                    // 建物の半径 ＋ 攻撃範囲 を停止距離とする
+                    agent.stoppingDistance = buildingRadius + unit.unitData.AttackRange;
                 }
             }
             else
             {
-                agent.stoppingDistance = attackController.attackRange;
+                // 通常ユニット相手なら、攻撃範囲をそのまま停止距離とする
+                agent.stoppingDistance = unit.unitData.AttackRange;
             }
         }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // ▼▼▼ ここに安全確認を追加 ▼▼▼
-        // NavMeshAgentが有効で、かつNavMesh上に配置されているかチェック
-        if (agent == null || agent.isActiveAndEnabled == false || agent.isOnNavMesh == false)
-        {
-            // 準備ができていなければ、このフレームの処理を中断する
-            return; 
-        }
-        // ▲▲▲ ここまで ▲▲▲
-
+        if (agent == null || !agent.isActiveAndEnabled || !agent.isOnNavMesh) return;
+        
         if (attackController.targetToAttack == null)
         {
             animator.SetBool("isFollowing", false);
+            return;
+        }
+
+        // 手動での移動命令がなく、ターゲットがいる場合
+        if (!animator.GetComponent<UnitMovement>().isCommandedToMove)
+        {
+            // 敵に向かって移動
+            agent.SetDestination(attackController.targetToAttack.position);
+            animator.transform.LookAt(attackController.targetToAttack);
+
+            // 目的地（停止距離内）に到達したら攻撃状態へ
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                animator.SetBool("isAttacking", true);
+            }
         }
         else
         {
-            if (animator.transform.GetComponent<UnitMovement>().isCommandedToMove == false)
-            {
-                // 敵に向かって移動
-                agent.SetDestination(attackController.targetToAttack.position);
-                animator.transform.LookAt(attackController.targetToAttack);
-
-                // NavMeshAgentが目的地（停止距離内）に到達したかチェック
-                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    // 到達していれば攻撃状態へ移行
-                    animator.SetBool("isAttacking", true);
-                }
-            }
+            // 移動命令が出されたら追跡を中断
+            animator.SetBool("isFollowing", false);
         }
     }
 }

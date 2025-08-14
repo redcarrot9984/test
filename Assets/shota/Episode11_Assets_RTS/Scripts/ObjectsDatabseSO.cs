@@ -80,6 +80,41 @@ public class ObjectData
     [field: Tooltip("このユニットを生産するために必要な建物の種類")]
     [field: SerializeField]
     public BuildingType producingBuilding { get; private set; } = BuildingType.None;
+    // ▼▼▼ ここから戦闘パラメータをまとめて追加 ▼▼▼
+
+    [field: Header("Unit Combat Stats")]
+
+    [field: Tooltip("ユニットの体力")]
+    [field: SerializeField]
+    public float MaxHealth { get; private set; } = 100f;
+
+    [field: Tooltip("ユニットの攻撃力")]
+    [field: SerializeField]
+    public int Damage { get; private set; } = 10;
+
+    [field: Tooltip("攻撃の射程距離")]
+    [field: SerializeField]
+    public float AttackRange { get; private set; } = 1.5f;
+
+    [field: Tooltip("攻撃の速さ（1秒間に何回攻撃するか）")]
+    [field: SerializeField]
+    public float AttackRate { get; private set; } = 1f;
+
+    [field: Tooltip("敵を感知する範囲。索敵コライダーの半径と合わせる")]
+    [field: SerializeField]
+    public float SensorRange { get; private set; } = 10f;
+
+    [field: Tooltip("遠距離ユニットかどうか")]
+    [field: SerializeField]
+    public bool IsRanged { get; private set; } = false;
+
+    [field: Tooltip("遠距離ユニットの場合の弾プレハブ")]
+    [field: SerializeField]
+    public GameObject ProjectilePrefab { get; private set; }
+
+    // ▲▲▲ ここまで追加 ▲▲▲
+
+
 }
 
 [System.Serializable]

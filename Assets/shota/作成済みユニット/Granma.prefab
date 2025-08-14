@@ -1987,7 +1987,7 @@ Animator:
   m_GameObject: {fileID: 6683225326082681941}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a259e6dc3a5605947b2db5802df67df0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a523ced2e5274d4280317609ccc4f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitMaxHealth: 100
+  databaseID: 101
   healthTracker: {fileID: 4626915637209892930}
   isBuilding: 0
 --- !u!114 &4757311451191967920
@@ -2071,7 +2071,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5545611673416560879
 MonoBehaviour:
@@ -2089,11 +2089,6 @@ MonoBehaviour:
   idleStateMaterial: {fileID: 0}
   attackStateMaterial: {fileID: 0}
   followStateMaterial: {fileID: 0}
-  unitDamage: 5
-  isPlayer: 1
-  projectilePrefab: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
-  isRanged: 1
-  attackRange: 10
 --- !u!120 &5222058166464129090
 LineRenderer:
   serializedVersion: 2

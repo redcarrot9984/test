@@ -25,6 +25,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Farm
     <ID>k__BackingField: 1
     <thisBuildingType>k__BackingField: 1
@@ -39,6 +46,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Wood
     <ID>k__BackingField: 2
     <thisBuildingType>k__BackingField: 2
@@ -53,6 +67,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Stone
     <ID>k__BackingField: 3
     <thisBuildingType>k__BackingField: 2
@@ -67,6 +88,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: AEON
     <ID>k__BackingField: 4
     <thisBuildingType>k__BackingField: 5
@@ -81,6 +109,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Home
     <ID>k__BackingField: 5
     <thisBuildingType>k__BackingField: 6
@@ -95,6 +130,13 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 1.5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Bar
     <ID>k__BackingField: 101
     <thisBuildingType>k__BackingField: 0
@@ -109,3 +151,10 @@ MonoBehaviour:
     <IsUnit>k__BackingField: 1
     <UnitPrefab>k__BackingField: {fileID: 6683225326082681941, guid: 290fa6ce205dc924c8a3d917632e65ab, type: 3}
     <producingBuilding>k__BackingField: 6
+    <MaxHealth>k__BackingField: 1000
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 1
+    <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
