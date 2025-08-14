@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class BuySlot : MonoBehaviour
+public class BuySlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
    public Sprite availableSprite;
    public Sprite unavailableSprite;
@@ -137,5 +138,41 @@ public class BuySlot : MonoBehaviour
          GetComponent<Image>().sprite = unavailableSprite;
          GetComponent<Button>().interactable = false;
       }
+   }
+   
+   public void OnPointerEnter(PointerEventData eventData)
+   {
+       // データベースから情報を取得
+       ObjectData objectData = DatabaseManager.Instance.databaseSO.GetObjectByID(databaseItemID);
+       if (objectData == null) return;
+
+       // 表示するテキストを組み立てる
+       string content = $"<size=24>{objectData.Name}</size>\n<size=18>{objectData.description}</size>\n\n"; // 名前と説明
+
+       // 資源コストを追加
+       if (objectData.resourceRequirements.Count > 0)
+       {
+           content += "<b>Cost:</b>\n";
+           foreach (var req in objectData.resourceRequirements)
+           {
+               content += $"{req.resource}: {req.amount}\n";
+           }
+       }
+
+       // ★ユニットの場合、生産時間を追加
+       if (objectData.IsUnit)
+       {
+           // ObjectDataにproductionTimeフィールドを追加する必要があります（後述）
+           // content += $"<b>生産時間:</b> {objectData.productionTime}秒\n";
+       }
+
+       // ツールチップシステムを呼び出して表示
+       TooltipSystem.Instance.Show(content);
+   }
+
+   public void OnPointerExit(PointerEventData eventData)
+   {
+       // マウスが離れたら隠す
+       TooltipSystem.Instance.Hide();
    }
 }
