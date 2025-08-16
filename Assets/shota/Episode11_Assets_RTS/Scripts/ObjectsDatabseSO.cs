@@ -113,6 +113,11 @@ public class ObjectData
     public GameObject ProjectilePrefab { get; private set; }
 
     // ▲▲▲ ここまで追加 ▲▲▲
+    // ▼▼▼ この項目が追加されていることを確認してください ▼▼▼
+    [field: Tooltip("このユニットの生産にかかる時間（秒）")]
+    [field: SerializeField]
+    public float productionTime { get; private set; } = 5f;
+    // ▲▲▲ ▲▲▲ ▲▲▲
 
 
 }
