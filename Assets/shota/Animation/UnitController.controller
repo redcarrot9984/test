@@ -23,7 +23,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 1170745510199516980, guid: cd9766bc4bd323248a02d2cc4650abb6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d7e1dce3deafd49ae71d5bda70a603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingDistance: 1
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -271,8 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b24026dd4019424e88bdaa7ae5590f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopAttackingDistance: 1.2
-  attackRate: 2
 --- !u!1107 &3526230090078594694
 AnimatorStateMachine:
   serializedVersion: 6
