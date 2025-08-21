@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: df6cc6630811e5740bdbae885282d117, type: 3}
+  availableSprite: {fileID: 21300000, guid: ce66b18508984b3478a2a577c507ca25, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 7e8c98612ad9f4a4d9192f47555f72d2, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 592a7457a816c674fafa7e7969cf28a3, type: 3}
+  availableSprite: {fileID: 21300000, guid: 69574c8e9dc59d045abeca6cc818c5aa, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 7e8c98612ad9f4a4d9192f47555f72d2, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 6f06befeeec1b1f418b9f80d055a354a, type: 3}
+  availableSprite: {fileID: 21300000, guid: c1abd459d441df94db55b9d78afd5890, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 7e8c98612ad9f4a4d9192f47555f72d2, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -2306,7 +2306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.409, y: -6.254}
+  m_AnchoredPosition: {x: -14.408997, y: -6.2539997}
   m_SizeDelta: {x: -28.819, y: -20.514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522824452
@@ -2651,7 +2651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 42b647c33df3a844a8a9341713da4f97, type: 3}
+  availableSprite: {fileID: 21300000, guid: c58eaca512ddc1745bc6151836259a5e, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 7e8c98612ad9f4a4d9192f47555f72d2, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -3028,7 +3028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 4b1f4e664f3755b4fa1a3c407d9226d0, type: 3}
+  availableSprite: {fileID: 21300000, guid: d860478b235578444a99044e54046b0a, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 4602ed6e4999ad7469d34e5e153e1429, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d427e3d67a83b954caa98dc3b974894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 80a288d1ae11cc741b2b6367b29997c2, type: 3}
+  availableSprite: {fileID: 21300000, guid: a03be5ec67eae5146ab3d7c5229d4d41, type: 3}
   unavailableSprite: {fileID: 21300000, guid: 7e8c98612ad9f4a4d9192f47555f72d2, type: 3}
   isAvailable: 0
   buySystem: {fileID: 1771942112}
@@ -3394,13 +3394,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Phace1
-    enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
-    enemyCount: 5
-    spawnInterval: 6
+    enemyGroups:
+    - enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
+      enemyCount: 10
+      spawnInterval: 2
   - waveName: Phace2
-    enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
-    enemyCount: 5
-    spawnInterval: 6
+    enemyGroups:
+    - enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
+      enemyCount: 4
+      spawnInterval: 1
   timeBetweenWaves: 20
   nextWaveCountdownText: {fileID: 981019839}
   spawnRadius: 50

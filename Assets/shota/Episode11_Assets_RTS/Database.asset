@@ -221,13 +221,13 @@ MonoBehaviour:
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 6683225326082681941, guid: 290fa6ce205dc924c8a3d917632e65ab, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 1073670289969325526, guid: bd20f550914b75c419d59668a4a3e82a, type: 3}
     <producingBuilding>k__BackingField: 6
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 5
     <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10
-    <IsRanged>k__BackingField: 1
-    <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
-    <productionTime>k__BackingField: 5
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0

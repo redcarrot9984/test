@@ -1,4 +1,4 @@
-// Code/WaveManager.cs
+// Code/WaveManager.cs (全体を書き換え)
 
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +6,25 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
 
+// ★★ 新しく追加：Wave内で、敵のグループを定義するためのクラス ★★
+[System.Serializable]
+public class EnemyGroup
+{
+    [Tooltip("このグループで出現させる敵のプレハブ")]
+    public GameObject enemyPrefab;
+    [Tooltip("この敵を何体出現させるか")]
+    public int enemyCount;
+    [Tooltip("次の敵が出現するまでの時間（秒）")]
+    public float spawnInterval;
+}
+
 [System.Serializable]
 public class Wave
 {
     public string waveName;
-    public GameObject enemyPrefab;
-    public int enemyCount;
-    public float spawnInterval;
+    // ★★ 変更：単一の敵設定から、EnemyGroupのリストに変更 ★★
+    // これにより、1つのWaveに複数の敵グループを設定できる
+    public List<EnemyGroup> enemyGroups;
 }
 
 public class WaveManager : MonoBehaviour
@@ -96,27 +108,35 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
     }
     
+    // ★★ ロジックを全面的に書き換え：複数の敵グループを順番に出現させる方式に変更 ★★
     IEnumerator SpawnWave(Wave wave)
     {
-        for (int i = 0; i < wave.enemyCount; i++)
+        // Waveに設定されているすべての敵グループを順番に処理する
+        foreach (var group in wave.enemyGroups)
         {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
-            if(spawnPosition == Vector3.zero)
+            // グループ内の敵を、指定された数だけ出現させる
+            for (int i = 0; i < group.enemyCount; i++)
             {
-                Debug.LogError("Failed to find a valid spawn position on the NavMesh.");
-                yield return null;
-                i--;
-                continue;
-            }
+                Vector3 spawnPosition = GetRandomSpawnPosition();
+                if(spawnPosition == Vector3.zero)
+                {
+                    Debug.LogError("Failed to find a valid spawn position on the NavMesh.");
+                    yield return null; // 1フレーム待ってリトライ
+                    i--; // カウンターを戻して、同じ敵を再度スポーン試行
+                    continue;
+                }
 
-            GameObject enemyInstance = Instantiate(wave.enemyPrefab, spawnPosition, Quaternion.identity);
-            aliveEnemies.Add(enemyInstance);
-            
-            yield return new WaitForSeconds(wave.spawnInterval);
+                // groupに設定された敵プレハブをインスタンス化
+                GameObject enemyInstance = Instantiate(group.enemyPrefab, spawnPosition, Quaternion.identity);
+                aliveEnemies.Add(enemyInstance);
+                
+                // groupに設定されたインターバルだけ待つ
+                yield return new WaitForSeconds(group.spawnInterval);
+            }
         }
 
+        // すべてのグループのスポーンが終わったら、待機状態に移行
         currentState = WaveState.WAITING;
-        yield break;
     }
     
     void StartCountdown()
@@ -164,7 +184,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // ★★ このメソッドをクラスの直下に移動しました ★★
     private Vector3 GetRandomSpawnPosition()
     {
         Transform castleTransform = GameManager.Instance.GetCastleTransform();
