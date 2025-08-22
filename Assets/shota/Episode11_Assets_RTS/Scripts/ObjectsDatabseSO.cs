@@ -93,6 +93,11 @@ public class ObjectData
 
     [field: Header("Unit Combat Stats")]
 
+    [field: Header("ユニット移動ステータス")] // ★★ここから追加★★
+    [field: Tooltip("ユニットの移動速度")]
+    [field: SerializeField]
+    public float MoveSpeed { get; private set; } = 5f; // ★★ここまで追加★★
+    
     [field: Tooltip("ユニットの体力")]
     [field: SerializeField]
     public float MaxHealth { get; private set; } = 100f;
