@@ -13,7 +13,7 @@ public class PlacementState : IBuildingState
     private GridData floorData;
     private GridData furnitureData;
     private ObjectPlacer objectPlacer;
-    private LayerMask placementCheckMask; 
+    private LayerMask placementCheckMask;
 
     public PlacementState(int iD,
                           Grid grid,
@@ -30,7 +30,7 @@ public class PlacementState : IBuildingState
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
-        
+
         placementCheckMask = ~LayerMask.GetMask("Preview");
 
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
@@ -58,19 +58,22 @@ public class PlacementState : IBuildingState
             Debug.LogWarning("その場所には設置できません。");
             return;
         }
-        
+
+        // ▼▼▼ 修正箇所 ▼▼▼
+        // 中心の計算をせず、グリッドセルの角の座標をそのまま使用します
         int placedObjectIndex = objectPlacer.PlaceObject(
             database.objectsData[selectedObjectIndex].Prefab,
             grid.CellToWorld(gridPosition)
         );
-        
+        // ▲▲▲ 修正ここまで ▲▲▲
+
         ObjectData placedObjectData = database.objectsData[selectedObjectIndex];
         BuildingType buildingType = placedObjectData.thisBuildingType;
 
         if (buildingType == BuildingType.Castle)
         {
             GameObject placedObject = objectPlacer.placedGameObjects[placedObjectIndex];
-            
+
             if (placedObject.CompareTag("Castle"))
             {
                 Debug.Log("<color=green>SUCCESS:</color> 城が設置されたため、Waveシステムを開始します。");
@@ -81,59 +84,51 @@ public class PlacementState : IBuildingState
                 Debug.LogError($"設定エラー: 種類が「Castle」の建物プレハブに 'Castle' タグが設定されていません。現在のタグ: {placedObject.tag}");
             }
         }
-        
+
         ResourceManager.Instance.DecreaseResourcesBasedOnRequirements(placedObjectData);
         ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
 
-        // GridDataの選択ロジックを簡略化（床かそれ以外か）
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 11 ? floorData : furnitureData; // '11'は床IDの例
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 11 ? floorData : furnitureData;
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
             placedObjectIndex);
-
-        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
 
-    // ▼▼▼ このメソッドのロジックを修正しました ▼▼▼
+    // このメソッドは、建物の占有エリアを正しくチェックしているため変更しません
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         ObjectData objectData = database.objectsData[selectedObjectIndex];
-        GridData selectedData = objectData.ID == 11 ? floorData : furnitureData; // '11'は床IDの例
+        GridData selectedData = objectData.ID == 11 ? floorData : furnitureData;
 
-        // グリッドデータ上に既に他のオブジェクトがないかチェック
         if (!selectedData.CanPlaceObjectAt(gridPosition, objectData.Size))
         {
             return false;
         }
-        
-        // 物理的な干渉がないかチェック
+
         Vector3 worldPosition = grid.CellToWorld(gridPosition);
-        // オブジェクトのサイズに合わせて当たり判定の中心と大きさを調整
-        Vector3 boxCenter = worldPosition + new Vector3(objectData.Size.x * 0.5f, 0.5f, objectData.Size.y * 0.5f);
-        Vector3 halfExtents = new Vector3(objectData.Size.x * 0.45f, 0.5f, objectData.Size.y * 0.45f); // 少し小さくして判定を緩やかに
-        
+        Vector3 boxCenter = worldPosition + new Vector3(objectData.Size.x * grid.cellSize.x * 0.5f, 0.5f, objectData.Size.y * grid.cellSize.z * 0.5f);
+        Vector3 halfExtents = new Vector3(objectData.Size.x * grid.cellSize.x * 0.45f, 0.5f, objectData.Size.y * grid.cellSize.z * 0.45f);
+
         Collider[] colliders = Physics.OverlapBox(boxCenter, halfExtents, Quaternion.identity, placementCheckMask);
 
-        // 衝突したオブジェクトを一つずつチェックする
         foreach (var collider in colliders)
         {
-            // 障害物（ユニットや他の建物など）のタグが付いていれば設置不可
             if(collider.CompareTag("Unit") || collider.CompareTag("Building") || collider.CompareTag("Enemy") || collider.CompareTag("Castle"))
             {
-                // デバッグ用に何と衝突したかログに出す
-                // Debug.LogWarning("設置不可: " + collider.name + " と衝突しています。");
                 return false;
             }
         }
-
-        // ループを抜けた場合、障害物はなかったということなので設置可
         return true;
     }
 
     public void UpdateState(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+
+        // ▼▼▼ 修正箇所 ▼▼▼
+        // こちらも同様に、グリッドセルの角の座標をそのままプレビュー位置として使用します
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+        // ▲▲▲ 修正ここまで ▲▲▲
     }
 }

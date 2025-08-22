@@ -18,7 +18,7 @@ MonoBehaviour:
     <thisBuildingType>k__BackingField: 3
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 5572564898612289097, guid: 23fce3aa185a26e4eb33f7bad6562eb5, type: 3}
+    <Prefab>k__BackingField: {fileID: 5484810688081283890, guid: d0b94a3f1d0f0e94db6dc9a40087072c, type: 3}
     <resourceRequirements>k__BackingField: []
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
@@ -151,11 +151,13 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 10
+      amount: 5
+    - resource: 2
+      amount: 5
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 5877365855344149578, guid: 4a14720c7aef8b448bfb1aa7bd863d46, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 4906794147408841619, guid: 5e67f0fcb6e963947a640a6cda392b68, type: 3}
     <producingBuilding>k__BackingField: 6
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
@@ -173,20 +175,22 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 10
+      amount: 5
+    - resource: 1
+      amount: 5
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 6683225326082681941, guid: 290fa6ce205dc924c8a3d917632e65ab, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 4731437896561413156, guid: d059e32ed0faca9468db0938bc38d339, type: 3}
     <producingBuilding>k__BackingField: 6
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 5
+    <AttackRange>k__BackingField: 2
     <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
-    <IsRanged>k__BackingField: 1
+    <SensorRange>k__BackingField: 4
+    <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
-    <productionTime>k__BackingField: 5
+    <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u6843\u3070\u3041\u3070"
     <ID>k__BackingField: 103
     <thisBuildingType>k__BackingField: 0
@@ -195,7 +199,11 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 10
+      amount: 5
+    - resource: 1
+      amount: 5
+    - resource: 2
+      amount: 5
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
@@ -217,7 +225,9 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 10
+      amount: 30
+    - resource: 3
+      amount: 30
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
@@ -226,6 +236,30 @@ MonoBehaviour:
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 5
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3C"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
+    <producingBuilding>k__BackingField: 0
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
     <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
