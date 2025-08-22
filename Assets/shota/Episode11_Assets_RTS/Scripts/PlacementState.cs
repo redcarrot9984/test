@@ -1,4 +1,4 @@
-// Code/PlacementState.cs
+// PlacementState.cs (全体を書き換え)
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,15 +13,11 @@ public class PlacementState : IBuildingState
     private GridData floorData;
     private GridData furnitureData;
     private ObjectPlacer objectPlacer;
-    private LayerMask placementCheckMask;
 
-    public PlacementState(int iD,
-                          Grid grid,
-                          PreviewSystem previewSystem,
-                          ObjectsDatabseSO database,
-                          GridData floorData,
-                          GridData furnitureData,
-                          ObjectPlacer objectPlacer)
+    // ★★変更点：障害物レイヤーをインスペクターから設定できるように変更★★
+    private LayerMask obstacleLayerMask; 
+
+    public PlacementState(int iD, Grid grid, PreviewSystem previewSystem, ObjectsDatabseSO database, GridData floorData, GridData furnitureData, ObjectPlacer objectPlacer)
     {
         ID = iD;
         this.grid = grid;
@@ -30,14 +26,16 @@ public class PlacementState : IBuildingState
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
-
-        placementCheckMask = ~LayerMask.GetMask("Preview");
+        
+        // ★★修正点：障害物レイヤーを直接指定★★
+        // "Unit", "Building", "Enemy", "Castle" レイヤーを障害物とみなす
+        // LayerMask.GetMask() は、指定した名前のレイヤーマスクを生成する
+        obstacleLayerMask = LayerMask.GetMask("Unit", "Building", "Enemy", "Castle");
 
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if (selectedObjectIndex > -1)
         {
-            previewSystem.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab,
-                database.objectsData[selectedObjectIndex].Size);
+            previewSystem.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
         }
         else
         {
@@ -55,80 +53,78 @@ public class PlacementState : IBuildingState
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (!placementValidity)
         {
-            Debug.LogWarning("その場所には設置できません。");
             return;
         }
-
-        // ▼▼▼ 修正箇所 ▼▼▼
-        // 中心の計算をせず、グリッドセルの角の座標をそのまま使用します
+        
         int placedObjectIndex = objectPlacer.PlaceObject(
             database.objectsData[selectedObjectIndex].Prefab,
             grid.CellToWorld(gridPosition)
         );
-        // ▲▲▲ 修正ここまで ▲▲▲
-
+        
         ObjectData placedObjectData = database.objectsData[selectedObjectIndex];
-        BuildingType buildingType = placedObjectData.thisBuildingType;
-
-        if (buildingType == BuildingType.Castle)
+        
+        if (placedObjectData.PlacementSound != null && AudioManager.Instance != null)
         {
-            GameObject placedObject = objectPlacer.placedGameObjects[placedObjectIndex];
-
-            if (placedObject.CompareTag("Castle"))
-            {
-                Debug.Log("<color=green>SUCCESS:</color> 城が設置されたため、Waveシステムを開始します。");
-                GameManager.Instance.RegisterCastle(placedObject.transform);
-            }
-            else
-            {
-                Debug.LogError($"設定エラー: 種類が「Castle」の建物プレハブに 'Castle' タグが設定されていません。現在のタグ: {placedObject.tag}");
-            }
+            AudioManager.Instance.PlaySE(placedObjectData.PlacementSound);
         }
-
-        ResourceManager.Instance.DecreaseResourcesBasedOnRequirements(placedObjectData);
-        ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
 
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 11 ? floorData : furnitureData;
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
             placedObjectIndex);
+        
+        BuildingType buildingType = placedObjectData.thisBuildingType;
+        if (buildingType == BuildingType.Castle)
+        {
+            GameObject placedObject = objectPlacer.placedGameObjects[placedObjectIndex];
+            if (placedObject.CompareTag("Castle"))
+            {
+                GameManager.Instance.RegisterCastle(placedObject.transform);
+            }
+        }
+        
+        ResourceManager.Instance.DecreaseResourcesBasedOnRequirements(placedObjectData);
+        ResourceManager.Instance.UpdateBuildingChanged(buildingType, true);
+
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
 
-    // このメソッドは、建物の占有エリアを正しくチェックしているため変更しません
+    // ▼▼▼ このメソッドの判定ロジックを修正しました ▼▼▼
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         ObjectData objectData = database.objectsData[selectedObjectIndex];
         GridData selectedData = objectData.ID == 11 ? floorData : furnitureData;
 
+        // 1. グリッドデータ上に既に他のオブジェクトがないかチェック
         if (!selectedData.CanPlaceObjectAt(gridPosition, objectData.Size))
         {
             return false;
         }
-
+        
+        // 2. 物理的な干渉がないかチェック (OverlapBoxを使用)
         Vector3 worldPosition = grid.CellToWorld(gridPosition);
+        
+        // 当たり判定の中心と大きさを、建物のサイズに合わせて正確に計算
         Vector3 boxCenter = worldPosition + new Vector3(objectData.Size.x * grid.cellSize.x * 0.5f, 0.5f, objectData.Size.y * grid.cellSize.z * 0.5f);
         Vector3 halfExtents = new Vector3(objectData.Size.x * grid.cellSize.x * 0.45f, 0.5f, objectData.Size.y * grid.cellSize.z * 0.45f);
+        
+        // ★★修正点：インスペクターで指定した障害物レイヤーとのみ衝突判定を行う★★
+        Collider[] colliders = Physics.OverlapBox(boxCenter, halfExtents, Quaternion.identity, obstacleLayerMask);
 
-        Collider[] colliders = Physics.OverlapBox(boxCenter, halfExtents, Quaternion.identity, placementCheckMask);
-
-        foreach (var collider in colliders)
+        // 障害物が見つかったら設置不可
+        if (colliders.Length > 0)
         {
-            if(collider.CompareTag("Unit") || collider.CompareTag("Building") || collider.CompareTag("Enemy") || collider.CompareTag("Castle"))
-            {
-                return false;
-            }
+            return false;
         }
+
+        // 全てのチェックを通過したら設置可
         return true;
     }
 
     public void UpdateState(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-
-        // ▼▼▼ 修正箇所 ▼▼▼
-        // こちらも同様に、グリッドセルの角の座標をそのままプレビュー位置として使用します
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
-        // ▲▲▲ 修正ここまで ▲▲▲
     }
 }

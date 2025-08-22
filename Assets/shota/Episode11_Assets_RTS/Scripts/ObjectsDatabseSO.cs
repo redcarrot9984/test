@@ -76,6 +76,15 @@ public class ObjectData
     [field: SerializeField]
     public GameObject UnitPrefab { get; private set; }
   
+    [field: Header("サウンド設定")] // ★★ここから追加★★
+    [field: Tooltip("建物を設置した時のSE")]
+    [field: SerializeField]
+    public AudioClip PlacementSound { get; private set; }
+
+    [field: Tooltip("ユニットが攻撃した時のSE")]
+    [field: SerializeField]
+    public AudioClip AttackSound { get; private set; } // ★★ここまで追加★★
+    
     // ▼▼▼ このフィールドを追加 ▼▼▼
     [field: Tooltip("このユニットを生産するために必要な建物の種類")]
     [field: SerializeField]
