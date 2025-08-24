@@ -116,7 +116,7 @@ public class PlacementSystem : MonoBehaviour
             buildingState.OnAction(gridPosition);
 
             // 資源を消費する
-            ResourceManager.Instance.DecreaseResourcesBasedOnRequirements(ob);
+           // ResourceManager.Instance.DecreaseResourcesBasedOnRequirements(ob);
 
             // ---- Add Buildable Benifits ---- // 
             foreach (BuildBenefits bf in ob.benefits)
