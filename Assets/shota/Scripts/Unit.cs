@@ -27,23 +27,30 @@ public class Unit : MonoBehaviour
 
         // 体力をデータベースの値で初期化
         currentHealth = unitData.MaxHealth;
-
-        // ★★ここから追加：NavMeshAgentにデータベースの値を設定★★
-        // isBuildingがfalse（つまりユニット）の場合のみ速度を設定
+        
+        // ★★ここから修正・追加★★
+        // isBuildingがfalse（つまりユニット）の場合のみ処理を行う
         if (!isBuilding)
         {
+            // NavMeshAgentにデータベースの値を設定
             NavMeshAgent agent = GetComponent<NavMeshAgent>();
             if (agent != null)
             {
-                // データベースから読み込んだ移動速度をagentのspeedに設定
                 agent.speed = unitData.MoveSpeed;
             }
             else
             {
                 Debug.LogWarning($"{gameObject.name} にNavMeshAgentコンポーネントが見つかりません。", this);
             }
+            
+            // ★★重要：生成時にUnitMovementを無効化する★★
+            UnitMovement movement = GetComponent<UnitMovement>();
+            if (movement != null)
+            {
+                movement.enabled = false;
+            }
         }
-        // ★★ここまで追加★★
+        // ★★ここまで修正・追加★★
     }
 
     void Start()
