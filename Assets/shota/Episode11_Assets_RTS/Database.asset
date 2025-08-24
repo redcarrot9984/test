@@ -315,7 +315,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv2"
-    <ID>k__BackingField: 201
+    <ID>k__BackingField: 202
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
@@ -342,7 +342,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv3"
-    <ID>k__BackingField: 201
+    <ID>k__BackingField: 203
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
@@ -369,7 +369,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv4"
-    <ID>k__BackingField: 201
+    <ID>k__BackingField: 204
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
@@ -396,7 +396,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv5"
-    <ID>k__BackingField: 201
+    <ID>k__BackingField: 205
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
@@ -423,7 +423,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv6"
-    <ID>k__BackingField: 201
+    <ID>k__BackingField: 206
     <thisBuildingType>k__BackingField: 0
     description: 
     <Size>k__BackingField: {x: 1, y: 1}

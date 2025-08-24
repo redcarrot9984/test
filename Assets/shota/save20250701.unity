@@ -1798,7 +1798,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.371
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1895,7 +1895,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.793
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3795,7 +3795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a06dc45939ab34db3e8cd20b4751f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameBGM: {fileID: 0}
+  inGameBGM: {fileID: 8300000, guid: 5010b122df3397f4fa56ecb4888df20b, type: 3}
   gameOverPanel: {fileID: 1537439176}
   gameClearPanel: {fileID: 608310117}
   waveManager: {fileID: 925082875}
