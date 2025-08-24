@@ -1,5 +1,3 @@
-// TitleManager.cs (全体を書き換え)
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,10 +13,10 @@ public class TitleManager : MonoBehaviour
     public GameObject titleClickPanel;
     public GameObject mainMenuPanel;
     public GameObject manualPanel;
+    public GameObject difficultyPanel; // ★★ 難易度選択パネルをインスペクターから設定 ★★
 
     void Start()
     {
-        // AudioManagerにBGMの再生を依頼
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayBGM(titleBGM);
@@ -27,6 +25,7 @@ public class TitleManager : MonoBehaviour
         titleClickPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
         manualPanel.SetActive(false);
+        difficultyPanel.SetActive(false); // 最初は非表示
     }
 
     void Update()
@@ -41,11 +40,23 @@ public class TitleManager : MonoBehaviour
     {
         titleClickPanel.SetActive(false);
         manualPanel.SetActive(false);
+        difficultyPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
 
-    public void StartGame()
+    // ★★ `StartGame`から名前変更 ★★
+    public void ShowDifficultySelect()
     {
+        mainMenuPanel.SetActive(false);
+        difficultyPanel.SetActive(true);
+    }
+
+    // ★★ 難易度ボタンから呼び出す新しいメソッド ★★
+    public void SelectDifficultyAndStart(int difficulty)
+    {
+        // GameSettingsに難易度を設定
+        GameSettings.Instance.selectedDifficulty = (GameSettings.Difficulty)difficulty;
+        // ゲームシーンをロード
         SceneManager.LoadScene(mainGameSceneName);
     }
 
@@ -60,7 +71,7 @@ public class TitleManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+        Application.Quit();
 #endif
     }
 }

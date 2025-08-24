@@ -3839,16 +3839,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da40057d8fc6e144ace32db27fb7a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - waveName: Phace1
+  easyWaves:
+  - waveName: P1
+    enemyGroups:
+    - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
+      enemyCount: 3
+      spawnInterval: 1
+  normalWaves:
+  - waveName: P!
+    enemyGroups:
+    - enemyPrefab: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
+      enemyCount: 3
+      spawnInterval: 1
+  hardWaves:
+  - waveName: P1
+    enemyGroups:
+    - enemyPrefab: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
+      enemyCount: 1
+      spawnInterval: 1
+  lunaticWaves:
+  - waveName: P1
     enemyGroups:
     - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
-      enemyCount: 10
-      spawnInterval: 2
-  - waveName: Phace2
-    enemyGroups:
-    - enemyPrefab: {fileID: 9049701041896844592, guid: 93ac19835b75645459eb01eb2057f73a, type: 3}
-      enemyCount: 4
+      enemyCount: 1
       spawnInterval: 1
   timeBetweenWaves: 1
   nextWaveCountdownText: {fileID: 981019839}
