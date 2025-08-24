@@ -292,7 +292,7 @@ MonoBehaviour:
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 1073670289969325526, guid: bd20f550914b75c419d59668a4a3e82a, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 577663322916128799, guid: 03969c2df0047874f8dc39e8672efbb3, type: 3}
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: f997be60c20952d4897c08b7e8a46bed, type: 3}
     <producingBuilding>k__BackingField: 6
@@ -304,7 +304,7 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
-    <IsAreaOfEffect>k__BackingField: 0
+    <IsAreaOfEffect>k__BackingField: 1
     <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 3
   - <Name>k__BackingField: "\u9B3C"
@@ -507,6 +507,6 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
-    <IsAreaOfEffect>k__BackingField: 0
-    <AreaOfEffectRadius>k__BackingField: 2
+    <IsAreaOfEffect>k__BackingField: 1
+    <AreaOfEffectRadius>k__BackingField: 5
     <productionTime>k__BackingField: 0
