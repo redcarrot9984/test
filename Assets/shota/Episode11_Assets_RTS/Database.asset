@@ -217,7 +217,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 1
+    <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u69CD\u3058\u3044\u3058"
     <ID>k__BackingField: 102
     <thisBuildingType>k__BackingField: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 1
+    <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u6843\u3070\u3041\u3070"
     <ID>k__BackingField: 103
     <thisBuildingType>k__BackingField: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 1
+    <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u6843\u592A\u90CE"
     <ID>k__BackingField: 104
     <thisBuildingType>k__BackingField: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 0
+    <productionTime>k__BackingField: 3
   - <Name>k__BackingField: "\u9B3C"
     <ID>k__BackingField: 201
     <thisBuildingType>k__BackingField: 0
