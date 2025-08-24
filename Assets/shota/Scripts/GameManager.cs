@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
     public GameObject gameClearPanel;
     public WaveManager waveManager;
     
+    // ★★ ここから追加 ★★
+    [Header("ポーズメニュー")]
+    public GameObject pauseMenuPanel; // インスペクターからポーズメニューのUIパネルをここに割り当てる
+    private bool isPaused = false;
+    // ★★ ここまで追加 ★★
+    
     private Transform castleTransform;
 
     private void Awake()
@@ -29,13 +35,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ★★ Updateメソッドを追加 ★★
+    private void Update()
+    {
+        // Escapeキーが押されたらポーズメニューをトグル表示する
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
     public void RegisterCastle(Transform newCastleTransform)
     {
         castleTransform = newCastleTransform;
      
         Debug.Log("<color=cyan>GAMEMANAGER:</color> Castle has been registered by placement system!");
         
-        // ゲーム中のBGMを再生
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayBGM(inGameBGM);
@@ -92,4 +107,45 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScene"); 
     }
+    
+    // ★★ ここから新しいメソッドを追加 ★★
+
+    /// <summary>
+    /// ゲームを再開する（UIボタンから呼び出す）
+    /// </summary>
+    public void ResumeGame()
+    {
+        if (isPaused)
+        {
+            TogglePause();
+        }
+    }
+
+    /// <summary>
+    /// ポーズ状態を切り替える
+    /// </summary>
+    private void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            // ゲームをポーズ
+            Time.timeScale = 0f;
+            if (pauseMenuPanel != null)
+            {
+                pauseMenuPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            // ゲームを再開
+            Time.timeScale = 1f;
+            if (pauseMenuPanel != null)
+            {
+                pauseMenuPanel.SetActive(false);
+            }
+        }
+    }
+    // ★★ ここまで追加 ★★
 }

@@ -28,12 +28,12 @@ public class InputManager : MonoBehaviour
         {
             HandleLeftClick();
         }
-
+    /*
         // Escapeキーが押された時の処理
         if (Input.GetKeyDown(KeyCode.Escape))
         {
              OnExit?.Invoke();
-        }
+        }*/
     }
 
    /* private void HandleLeftClick()
