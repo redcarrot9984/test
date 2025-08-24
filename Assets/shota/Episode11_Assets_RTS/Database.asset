@@ -145,7 +145,7 @@ MonoBehaviour:
     <resourceRequirements>k__BackingField:
     - resource: 3
       amount: 10
-    <buildDependency>k__BackingField: 03000000
+    <buildDependency>k__BackingField: 0300000005000000
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
     <UnitPrefab>k__BackingField: {fileID: 0}
