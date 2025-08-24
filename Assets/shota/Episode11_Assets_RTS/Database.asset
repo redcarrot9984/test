@@ -16,7 +16,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Castle
     <ID>k__BackingField: 0
     <thisBuildingType>k__BackingField: 3
-    <TooltipDescription>k__BackingField: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u304A\u3046\u3044\uFF48\u3075\u3041\u304A\u3046\u3047\uFF46\u306F"
+    <TooltipDescription>k__BackingField: "\u304A\u57CE:\u307E\u305A\uFF0C\u6700\u521D\u306B\u8A2D\u7F6E\u3057\u3088\u3046\uFF0E\u8907\u6570\u8A2D\u7F6E\u3057\u3066\u30BF\u30FC\u30B2\u30C3\u30C8\u3092\u5206\u6563\u3055\u305B\u308B\u3053\u3068\u3082\u3067\u304D\u308B\u3088\uFF01\n\u5FC5\u8981\u8CC7\u6750:\u98DF\u659930\u672830\u77F330"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5484810688081283890, guid: d0b94a3f1d0f0e94db6dc9a40087072c, type: 3}
     <resourceRequirements>k__BackingField:
@@ -47,7 +47,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Farm
     <ID>k__BackingField: 1
     <thisBuildingType>k__BackingField: 1
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u8FB2\u5834:\u98DF\u6599\u3092\u751F\u7523\u3067\u304D\u307E\u3059\n\u5FC5\u8981\u8CC7\u6750:\u672810\u77F310\u91D110"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 8444502153528005128, guid: bd6a689be36ba8243aa5765d66b5b130, type: 3}
     <resourceRequirements>k__BackingField:
@@ -78,7 +78,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Wood
     <ID>k__BackingField: 2
     <thisBuildingType>k__BackingField: 2
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u4F10\u63A1\u5834:\u6728\u6750\u3092\u751F\u7523\u3059\u308B\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u672810\u91D110"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 7262245746199538403, guid: 5faea7febf0e84643b14a990b4078f34, type: 3}
     <resourceRequirements>k__BackingField:
@@ -107,7 +107,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Stone
     <ID>k__BackingField: 3
     <thisBuildingType>k__BackingField: 2
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u63A1\u77F3\u5834:\u77F3\u3092\u63A1\u6398\u3059\u308B\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u77F310\u91D110"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 4555530825671001719, guid: fd176e17a9f9b26449ff9e9f273b2a98, type: 3}
     <resourceRequirements>k__BackingField:
@@ -136,7 +136,7 @@ MonoBehaviour:
   - <Name>k__BackingField: AEON
     <ID>k__BackingField: 4
     <thisBuildingType>k__BackingField: 5
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "NEON MALL:\u91D1\u306E\u6210\u308B\u5546\u696D\u65BD\u8A2D\u3060\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u672830\u77F330"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 238622875141571242, guid: b01c343cea56d3c46a4113a9830a5ed5, type: 3}
     <resourceRequirements>k__BackingField:
@@ -165,7 +165,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Home
     <ID>k__BackingField: 5
     <thisBuildingType>k__BackingField: 6
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u8001\u4EBA\u30DB\u30FC\u30E0:\u6226\u3046\u6C11\u3092\u51FA\u6483\u3055\u305B\u308B\u3088!\u305F\u307E\u306B\u8CC7\u6750\u3092\u751F\u307F\u51FA\u3059\u3088\uFF01\n\u5FC5\u8981\u8CC7\u6750:\u91D120"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 348707351167713971, guid: b589b43fe8afecb4fb5cd941d4159e2a, type: 3}
     <resourceRequirements>k__BackingField:
@@ -192,7 +192,7 @@ MonoBehaviour:
   - <Name>k__BackingField: "\u938C\u3058\u3044\u3058"
     <ID>k__BackingField: 101
     <thisBuildingType>k__BackingField: 0
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u938C\u304A\u3058\u3044\u3055\u3093:\u938C\u3067\u6226\u3046\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u98DF\u659915\u77F315"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -221,7 +221,7 @@ MonoBehaviour:
   - <Name>k__BackingField: "\u69CD\u3058\u3044\u3058"
     <ID>k__BackingField: 102
     <thisBuildingType>k__BackingField: 0
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u69CD\u304A\u3058\u3044\u3055\u3093:\u69CD\u3067\u6226\u3046\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u98DF\u659915\u672815"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -250,7 +250,7 @@ MonoBehaviour:
   - <Name>k__BackingField: "\u6843\u3070\u3041\u3070"
     <ID>k__BackingField: 103
     <thisBuildingType>k__BackingField: 0
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u304A\u3070\u3042\u3055\u3093:\u6843\u3092\u6295\u3052\u3066\u6226\u3046\u3088!\n\u5FC5\u8981\u8CC7\u6750:\u98DF\u659915\u672820\u77F320"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -281,7 +281,7 @@ MonoBehaviour:
   - <Name>k__BackingField: "\u6843\u592A\u90CE"
     <ID>k__BackingField: 104
     <thisBuildingType>k__BackingField: 0
-    <TooltipDescription>k__BackingField: 
+    <TooltipDescription>k__BackingField: "\u6843\u592A\u90CE:\u6843\u592A\u90CE\u304C\u964D\u81E8\u3059\u308B\u3088\uFF01\n\u5FC5\u8981\u8CC7\u6750:\u98DF\u659930\u91D130"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -354,12 +354,12 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 2
+    <MaxHealth>k__BackingField: 200
+    <Damage>k__BackingField: 100
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 0.5
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
@@ -383,12 +383,12 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 3
+    <MaxHealth>k__BackingField: 300
+    <Damage>k__BackingField: 100
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 0.3
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
@@ -412,12 +412,12 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 4
+    <MaxHealth>k__BackingField: 300
+    <Damage>k__BackingField: 200
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 0.5
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
@@ -441,12 +441,12 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 4
+    <MaxHealth>k__BackingField: 500
+    <Damage>k__BackingField: 200
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 0.5
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
@@ -471,11 +471,11 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
     <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MaxHealth>k__BackingField: 1000
+    <Damage>k__BackingField: 300
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 0.5
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
@@ -499,12 +499,12 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 100
-    <Damage>k__BackingField: 10000
-    <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 10
+    <MoveSpeed>k__BackingField: 2
+    <MaxHealth>k__BackingField: 10000
+    <Damage>k__BackingField: 500
+    <AttackRange>k__BackingField: 5
+    <AttackRate>k__BackingField: 0.3
+    <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
