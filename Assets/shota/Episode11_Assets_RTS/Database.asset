@@ -211,7 +211,7 @@ MonoBehaviour:
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 0.5
+    <AttackRate>k__BackingField: 2
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
@@ -271,7 +271,7 @@ MonoBehaviour:
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 5
     <AttackRange>k__BackingField: 10
-    <AttackRate>k__BackingField: 3
+    <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 1
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
@@ -298,8 +298,8 @@ MonoBehaviour:
     <producingBuilding>k__BackingField: 6
     <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 300
-    <Damage>k__BackingField: 50
-    <AttackRange>k__BackingField: 5
+    <Damage>k__BackingField: 20
+    <AttackRange>k__BackingField: 3
     <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
@@ -500,10 +500,10 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
     <producingBuilding>k__BackingField: 0
     <MoveSpeed>k__BackingField: 2
-    <MaxHealth>k__BackingField: 10000
-    <Damage>k__BackingField: 500
+    <MaxHealth>k__BackingField: 3000
+    <Damage>k__BackingField: 90
     <AttackRange>k__BackingField: 5
-    <AttackRate>k__BackingField: 0.3
+    <AttackRate>k__BackingField: 0.1
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
