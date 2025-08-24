@@ -35,9 +35,6 @@ public enum BuildingType
     
 }
 
-
-
-
 [System.Serializable]
 public class ObjectData
 {
@@ -50,9 +47,13 @@ public class ObjectData
     [field: SerializeField]
     public BuildingType thisBuildingType { get; private set; }
 
+    // ▼▼▼ この部分を変更 ▼▼▼
+    [field: Header("UI 表示")]
     [field: SerializeField]
-    [TextArea(3, 10)]
-    public string description;
+    [field: Tooltip("購入ボタンにマウスを乗せた時に表示される説明文")]
+    [field: TextArea(5, 10)]
+    public string TooltipDescription { get; private set; }
+    // ▲▲▲ ここまで変更 ▲▲▲
 
     [field: SerializeField]
     public Vector2Int Size { get; private set; } = Vector2Int.one;
@@ -68,7 +69,7 @@ public class ObjectData
     
     [field: SerializeField]
     public List<BuildBenefits> benefits { get; private set; }
-    // ▼▼▼ 以下を追加 ▼▼▼
+    
     [field: Header("Unit Production")]
     [field: SerializeField]
     public bool IsUnit { get; private set; } = false;
@@ -76,27 +77,25 @@ public class ObjectData
     [field: SerializeField]
     public GameObject UnitPrefab { get; private set; }
   
-    [field: Header("サウンド設定")] // ★★ここから追加★★
+    [field: Header("サウンド設定")]
     [field: Tooltip("建物を設置した時のSE")]
     [field: SerializeField]
     public AudioClip PlacementSound { get; private set; }
 
     [field: Tooltip("ユニットが攻撃した時のSE")]
     [field: SerializeField]
-    public AudioClip AttackSound { get; private set; } // ★★ここまで追加★★
+    public AudioClip AttackSound { get; private set; }
     
-    // ▼▼▼ このフィールドを追加 ▼▼▼
     [field: Tooltip("このユニットを生産するために必要な建物の種類")]
     [field: SerializeField]
     public BuildingType producingBuilding { get; private set; } = BuildingType.None;
-    // ▼▼▼ ここから戦闘パラメータをまとめて追加 ▼▼▼
 
     [field: Header("Unit Combat Stats")]
 
-    [field: Header("ユニット移動ステータス")] // ★★ここから追加★★
+    [field: Header("ユニット移動ステータス")]
     [field: Tooltip("ユニットの移動速度")]
     [field: SerializeField]
-    public float MoveSpeed { get; private set; } = 5f; // ★★ここまで追加★★
+    public float MoveSpeed { get; private set; } = 5f;
     
     [field: Tooltip("ユニットの体力")]
     [field: SerializeField]
@@ -125,14 +124,19 @@ public class ObjectData
     [field: Tooltip("遠距離ユニットの場合の弾プレハブ")]
     [field: SerializeField]
     public GameObject ProjectilePrefab { get; private set; }
+    
+    [field: Header("Area of Effect")]
+    [field: Tooltip("攻撃が範囲攻撃かどうか")]
+    [field: SerializeField]
+    public bool IsAreaOfEffect { get; private set; } = false;
 
-    // ▲▲▲ ここまで追加 ▲▲▲
-    // ▼▼▼ この項目が追加されていることを確認してください ▼▼▼
+    [field: Tooltip("範囲攻撃の場合の半径")]
+    [field: SerializeField]
+    public float AreaOfEffectRadius { get; private set; } = 2f;
+
     [field: Tooltip("このユニットの生産にかかる時間（秒）")]
     [field: SerializeField]
     public float productionTime { get; private set; } = 5f;
-    // ▲▲▲ ▲▲▲ ▲▲▲
-
 
 }
 
@@ -151,7 +155,6 @@ public class BuildBenefits
     {
         Housing
     }
-
 
     public string benefit;
     public Sprite benefitIcon;

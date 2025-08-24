@@ -16,7 +16,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Castle
     <ID>k__BackingField: 0
     <thisBuildingType>k__BackingField: 3
-    description: 
+    <TooltipDescription>k__BackingField: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u304A\u3046\u3044\uFF48\u3075\u3041\u304A\u3046\u3047\uFF46\u306F"
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5484810688081283890, guid: d0b94a3f1d0f0e94db6dc9a40087072c, type: 3}
     <resourceRequirements>k__BackingField:
@@ -41,11 +41,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: Farm
     <ID>k__BackingField: 1
     <thisBuildingType>k__BackingField: 1
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 8444502153528005128, guid: bd6a689be36ba8243aa5765d66b5b130, type: 3}
     <resourceRequirements>k__BackingField:
@@ -70,11 +72,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: Wood
     <ID>k__BackingField: 2
     <thisBuildingType>k__BackingField: 2
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 7262245746199538403, guid: 5faea7febf0e84643b14a990b4078f34, type: 3}
     <resourceRequirements>k__BackingField:
@@ -97,11 +101,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: Stone
     <ID>k__BackingField: 3
     <thisBuildingType>k__BackingField: 2
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 4555530825671001719, guid: fd176e17a9f9b26449ff9e9f273b2a98, type: 3}
     <resourceRequirements>k__BackingField:
@@ -124,11 +130,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: AEON
     <ID>k__BackingField: 4
     <thisBuildingType>k__BackingField: 5
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 238622875141571242, guid: b01c343cea56d3c46a4113a9830a5ed5, type: 3}
     <resourceRequirements>k__BackingField:
@@ -151,11 +159,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: Home
     <ID>k__BackingField: 5
     <thisBuildingType>k__BackingField: 6
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 348707351167713971, guid: b589b43fe8afecb4fb5cd941d4159e2a, type: 3}
     <resourceRequirements>k__BackingField:
@@ -176,11 +186,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 5
   - <Name>k__BackingField: "\u938C\u3058\u3044\u3058"
     <ID>k__BackingField: 101
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -203,11 +215,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u69CD\u3058\u3044\u3058"
     <ID>k__BackingField: 102
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -230,11 +244,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u6843\u3070\u3041\u3070"
     <ID>k__BackingField: 103
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -259,11 +275,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 1
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u6843\u592A\u90CE"
     <ID>k__BackingField: 104
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -286,11 +304,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3C"
     <ID>k__BackingField: 201
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -313,11 +333,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv2"
     <ID>k__BackingField: 202
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -340,11 +362,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv3"
     <ID>k__BackingField: 203
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -367,11 +391,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv4"
     <ID>k__BackingField: 204
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -394,11 +420,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv5"
     <ID>k__BackingField: 205
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -421,11 +449,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3CLv6"
     <ID>k__BackingField: 206
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -448,11 +478,13 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u9B3C Boss"
     <ID>k__BackingField: 207
     <thisBuildingType>k__BackingField: 0
-    description: 
+    <TooltipDescription>k__BackingField: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
@@ -475,4 +507,6 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 0
+    <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
