@@ -1,4 +1,5 @@
-using System.Collections;
+// UnitSelectionBox.cs (全体を書き換え)
+
 using System.Collections.Generic;
 using UnityEngine;
  
@@ -13,6 +14,9 @@ public class UnitSelectionBox : MonoBehaviour
  
     Vector2 startPosition;
     Vector2 endPosition;
+
+    [Tooltip("クリックかドラッグかを判定するためのマウス移動のしきい値")]
+    public float dragThreshold = 20f;
  
     private void Start()
     {
@@ -24,37 +28,46 @@ public class UnitSelectionBox : MonoBehaviour
  
     private void Update()
     {
-        
-        
-        // When Clicked
+        // 左クリックを押した瞬間の処理
         if (Input.GetMouseButtonDown(0))
         {
             startPosition = Input.mousePosition;
- 
-            // For selection the Units
             selectionBox = new Rect();
         }
  
-        // When Dragging
+        // マウスを押している間の処理
         if (Input.GetMouseButton(0))
         {
-            if (boxVisual.rect.width > 0 || boxVisual.rect.height > 0)
-            {
-                UnitSelectionManager.Instance.DeselectAll();
-                           SelectUnits();
-            }
-
-
             endPosition = Input.mousePosition;
             DrawVisual();
             DrawSelection();
         }
  
-        // When Releasing
+        // 左クリックを離した瞬間の処理
         if (Input.GetMouseButtonUp(0))
         {
-            SelectUnits();
- 
+            // ★★ここからロジックを修正★★
+
+            // マウスの移動距離を計算
+            float mouseDragDistance = (startPosition - endPosition).magnitude;
+
+            // 移動距離がしきい値を超えていれば「ドラッグ選択」とみなす
+            if (mouseDragDistance > dragThreshold)
+            {
+                // Shiftキーが押されていなければ、まず現在の選択をすべて解除する
+                if (!Input.GetKey(KeyCode.LeftShift))
+                {
+                    UnitSelectionManager.Instance.DeselectAll();
+                }
+                // その後、選択ボックス内のユニットを選択する
+                SelectUnits();
+            }
+            // しきい値以下であれば「クリック」とみなされ、このスクリプトは何もしない
+            // (クリックによる単体選択は UnitSelectionManager.cs が担当)
+
+            // ★★ここまで修正★★
+
+            // 変数と表示をリセット
             startPosition = Vector2.zero;
             endPosition = Vector2.zero;
             DrawVisual();
@@ -63,20 +76,11 @@ public class UnitSelectionBox : MonoBehaviour
  
     void DrawVisual()
     {
-        // Calculate the starting and ending positions of the selection box.
         Vector2 boxStart = startPosition;
         Vector2 boxEnd = endPosition;
- 
-        // Calculate the center of the selection box.
         Vector2 boxCenter = (boxStart + boxEnd) / 2;
- 
-        // Set the position of the visual selection box based on its center.
         boxVisual.position = boxCenter;
- 
-        // Calculate the size of the selection box in both width and height.
         Vector2 boxSize = new Vector2(Mathf.Abs(boxStart.x - boxEnd.x), Mathf.Abs(boxStart.y - boxEnd.y));
- 
-        // Set the size of the visual selection box based on its calculated size.
         boxVisual.sizeDelta = boxSize;
     }
  
@@ -92,7 +96,6 @@ public class UnitSelectionBox : MonoBehaviour
             selectionBox.xMin = startPosition.x;
             selectionBox.xMax = Input.mousePosition.x;
         }
- 
  
         if (Input.mousePosition.y < startPosition.y)
         {
@@ -110,7 +113,6 @@ public class UnitSelectionBox : MonoBehaviour
     {
         foreach (var unit in UnitSelectionManager.Instance.allUnitsList)
         {
-            // ★★ 選択対象がプレイヤーのユニット（タグが "Unit"）であるかを確認する条件を追加 ★★
             if (unit.CompareTag("Unit") && selectionBox.Contains(myCam.WorldToScreenPoint(unit.transform.position)))
             {
                 UnitSelectionManager.Instance.DragSelect(unit);

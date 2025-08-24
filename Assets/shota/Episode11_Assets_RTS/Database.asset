@@ -27,7 +27,8 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 8300000, guid: 348df9e6cfb3d624fa1e4ece5632cef3, type: 3}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
-    <MaxHealth>k__BackingField: 100
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
     <AttackRate>k__BackingField: 1
@@ -51,6 +52,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
@@ -75,6 +77,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
@@ -99,6 +102,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
@@ -123,6 +127,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
@@ -147,6 +152,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
@@ -173,6 +179,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 2
@@ -199,6 +206,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 2
@@ -223,10 +231,11 @@ MonoBehaviour:
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
-    <UnitPrefab>k__BackingField: {fileID: 8487974931472900474, guid: 749dba3cb916e7d46a79b8a38e351472, type: 3}
+    <UnitPrefab>k__BackingField: {fileID: 594411805609662834, guid: df55451521fd89f49b3c3a19a3f6be31, type: 3}
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 5
@@ -253,6 +262,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 1000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 5
@@ -279,6 +289,7 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 2
