@@ -3814,7 +3814,7 @@ MonoBehaviour:
   waves:
   - waveName: Phace1
     enemyGroups:
-    - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
+    - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
       enemyCount: 10
       spawnInterval: 2
   - waveName: Phace2

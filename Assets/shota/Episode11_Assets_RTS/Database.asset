@@ -19,7 +19,13 @@ MonoBehaviour:
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5484810688081283890, guid: d0b94a3f1d0f0e94db6dc9a40087072c, type: 3}
-    <resourceRequirements>k__BackingField: []
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 1
+      amount: 30
+    - resource: 2
+      amount: 30
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
@@ -28,7 +34,7 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
     <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
+    <MaxHealth>k__BackingField: 3000
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 1.5
     <AttackRate>k__BackingField: 1
@@ -43,7 +49,11 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 8444502153528005128, guid: bd6a689be36ba8243aa5765d66b5b130, type: 3}
     <resourceRequirements>k__BackingField:
-    - resource: 0
+    - resource: 1
+      amount: 10
+    - resource: 2
+      amount: 10
+    - resource: 3
       amount: 10
     <buildDependency>k__BackingField: 03000000
     <benefits>k__BackingField: []
@@ -70,6 +80,8 @@ MonoBehaviour:
     <resourceRequirements>k__BackingField:
     - resource: 1
       amount: 10
+    - resource: 3
+      amount: 10
     <buildDependency>k__BackingField: 03000000
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
@@ -93,7 +105,9 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 4555530825671001719, guid: fd176e17a9f9b26449ff9e9f273b2a98, type: 3}
     <resourceRequirements>k__BackingField:
-    - resource: 1
+    - resource: 2
+      amount: 10
+    - resource: 3
       amount: 10
     <buildDependency>k__BackingField: 03000000
     <benefits>k__BackingField: []
@@ -118,8 +132,10 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 238622875141571242, guid: b01c343cea56d3c46a4113a9830a5ed5, type: 3}
     <resourceRequirements>k__BackingField:
-    - resource: 3
-      amount: 10
+    - resource: 1
+      amount: 30
+    - resource: 2
+      amount: 30
     <buildDependency>k__BackingField: 03000000
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
@@ -144,7 +160,7 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 348707351167713971, guid: b589b43fe8afecb4fb5cd941d4159e2a, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 3
-      amount: 1
+      amount: 20
     <buildDependency>k__BackingField: 0300000005000000
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 0
@@ -169,9 +185,9 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 5
+      amount: 15
     - resource: 2
-      amount: 5
+      amount: 15
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
@@ -180,10 +196,10 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
     <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
+    <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
     <AttackRange>k__BackingField: 2
-    <AttackRate>k__BackingField: 1
+    <AttackRate>k__BackingField: 0.5
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
@@ -196,9 +212,9 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 5
+      amount: 15
     - resource: 1
-      amount: 5
+      amount: 15
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
@@ -207,11 +223,11 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
     <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 2
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 20
+    <AttackRange>k__BackingField: 4
     <AttackRate>k__BackingField: 1
-    <SensorRange>k__BackingField: 4
+    <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
     <productionTime>k__BackingField: 1
@@ -223,11 +239,11 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 5
+      amount: 15
     - resource: 1
-      amount: 5
+      amount: 20
     - resource: 2
-      amount: 5
+      amount: 20
     <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
     <IsUnit>k__BackingField: 1
@@ -235,11 +251,11 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
-    <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
-    <Damage>k__BackingField: 10
-    <AttackRange>k__BackingField: 5
-    <AttackRate>k__BackingField: 1
+    <MoveSpeed>k__BackingField: 2
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 5
+    <AttackRange>k__BackingField: 10
+    <AttackRate>k__BackingField: 3
     <SensorRange>k__BackingField: 10
     <IsRanged>k__BackingField: 1
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
@@ -252,7 +268,7 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 0}
     <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 30
+      amount: 60
     - resource: 3
       amount: 30
     <buildDependency>k__BackingField: 
@@ -263,8 +279,8 @@ MonoBehaviour:
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 6
     <MoveSpeed>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
-    <Damage>k__BackingField: 10
+    <MaxHealth>k__BackingField: 300
+    <Damage>k__BackingField: 50
     <AttackRange>k__BackingField: 5
     <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10
@@ -289,9 +305,171 @@ MonoBehaviour:
     <PlacementSound>k__BackingField: {fileID: 0}
     <AttackSound>k__BackingField: {fileID: 0}
     <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 3
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 100
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 20
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3CLv2"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
     <MoveSpeed>k__BackingField: 5
     <MaxHealth>k__BackingField: 100
     <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3CLv3"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3CLv4"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: 9e83deee06122574caecce41d29c43c9, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3CLv5"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: e395f588d6ac3314f9c80734b93f5e59, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3CLv6"
+    <ID>k__BackingField: 201
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: 06e1594c86c5ea94ea38ec90ff6691b9, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10
+    <AttackRange>k__BackingField: 2
+    <AttackRate>k__BackingField: 1
+    <SensorRange>k__BackingField: 10
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3C Boss"
+    <ID>k__BackingField: 207
+    <thisBuildingType>k__BackingField: 0
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 0}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 5
+    <MaxHealth>k__BackingField: 100
+    <Damage>k__BackingField: 10000
     <AttackRange>k__BackingField: 2
     <AttackRate>k__BackingField: 1
     <SensorRange>k__BackingField: 10

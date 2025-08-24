@@ -3,7 +3,37 @@ guid: 069727b6bc582324ea4a49fa71fbbbd8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 86e9c0afc7f644047a28e96fc4770c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye
+    second: {fileID: 2100000, guid: f0ebc2f3287433f41a8649f53ba94ffc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: db7b29285df906c4a84ba6b4017f96ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: horn
+    second: {fileID: 2100000, guid: 49a71cee1308a5f45b6359b9c61d2ddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: konbou
+    second: {fileID: 2100000, guid: 827c9552207b8a84989a198d3b5e4c74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tubutubu
+    second: {fileID: 2100000, guid: 225a94e62dca62e4b82ef8b091857a02, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
