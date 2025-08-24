@@ -41,7 +41,7 @@ MonoBehaviour:
     <thisBuildingType>k__BackingField: 1
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 4918221716752805702, guid: bc49ba92c389e2341a0202769e05f2f6, type: 3}
+    <Prefab>k__BackingField: {fileID: 8444502153528005128, guid: bd6a689be36ba8243aa5765d66b5b130, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 0
       amount: 10
@@ -116,7 +116,7 @@ MonoBehaviour:
     <thisBuildingType>k__BackingField: 5
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 2372321279257313444, guid: e7c71417ecec8514292c440bcd5c4f13, type: 3}
+    <Prefab>k__BackingField: {fileID: 238622875141571242, guid: b01c343cea56d3c46a4113a9830a5ed5, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 3
       amount: 10
