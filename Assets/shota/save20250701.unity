@@ -3843,8 +3843,8 @@ MonoBehaviour:
   - waveName: P1
     enemyGroups:
     - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
-      enemyCount: 3
-      spawnInterval: 1
+      enemyCount: 30
+      spawnInterval: 0
   normalWaves:
   - waveName: P!
     enemyGroups:
@@ -3863,7 +3863,7 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
       enemyCount: 1
       spawnInterval: 1
-  timeBetweenWaves: 1
+  timeBetweenWaves: 30
   nextWaveCountdownText: {fileID: 981019839}
   spawnRadius: 50
 --- !u!1 &937021607
@@ -4818,7 +4818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.6, y: -135.26}
+  m_AnchoredPosition: {x: 30.6, y: -153.77}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1257197985
@@ -6470,8 +6470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.54397, y: -160.13}
-  m_SizeDelta: {x: -454.1661, y: -320.26}
+  m_AnchoredPosition: {x: 106.55124, y: -180.10742}
+  m_SizeDelta: {x: -527.4191, y: -360.2151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775321401
 MonoBehaviour:

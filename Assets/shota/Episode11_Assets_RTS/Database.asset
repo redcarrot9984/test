@@ -215,7 +215,7 @@ MonoBehaviour:
     <SensorRange>k__BackingField: 5
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
-    <IsAreaOfEffect>k__BackingField: 0
+    <IsAreaOfEffect>k__BackingField: 1
     <AreaOfEffectRadius>k__BackingField: 2
     <productionTime>k__BackingField: 0
   - <Name>k__BackingField: "\u69CD\u3058\u3044\u3058"

@@ -1,5 +1,3 @@
-// UnitAttackState.cs (全体を書き換え)
-
 using UnityEngine;
 
 public class UnitAttackState : StateMachineBehaviour
@@ -47,13 +45,27 @@ public class UnitAttackState : StateMachineBehaviour
 
     private void Attack()
     {
-        // ★★ここから追加：攻撃SEを再生★★
         if (unit.unitData.AttackSound != null && AudioManager.Instance != null)
         {
             AudioManager.Instance.PlaySE(unit.unitData.AttackSound);
         }
-        // ★★ここまで追加★★
 
+        // ▼▼▼ データベースの値に応じて処理を分岐 ▼▼▼
+        if (unit.unitData.IsAreaOfEffect)
+        {
+            PerformAreaAttack();
+        }
+        else
+        {
+            PerformSingleTargetAttack();
+        }
+    }
+
+    /// <summary>
+    /// 単体攻撃を実行する（従来の処理）
+    /// </summary>
+    private void PerformSingleTargetAttack()
+    {
         if (unit.unitData.IsRanged)
         {
             if (unit.unitData.ProjectilePrefab == null) return;
@@ -70,6 +82,36 @@ public class UnitAttackState : StateMachineBehaviour
             if (targetUnit != null)
             {
                 targetUnit.TakeDamage(unit.unitData.Damage);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 範囲攻撃を実行する（新しい処理）
+    /// </summary>
+    private void PerformAreaAttack()
+    {
+        // 攻撃の中心点をメインターゲットの位置にする
+        Vector3 attackCenter = attackController.targetToAttack.position;
+
+        // 指定した半径内のすべてのコライダーを取得する
+        Collider[] hitColliders = Physics.OverlapSphere(attackCenter, unit.unitData.AreaOfEffectRadius);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            // 自分自身は攻撃対象外
+            if (hitCollider.gameObject == unit.gameObject) continue;
+
+            // 敵かどうかをタグで判定してダメージを与える
+            bool isPlayerUnit = unit.CompareTag("Unit");
+            if ((isPlayerUnit && hitCollider.CompareTag("Enemy")) ||
+                (!isPlayerUnit && (hitCollider.CompareTag("Unit") || hitCollider.CompareTag("Castle"))))
+            {
+                Unit targetUnit = hitCollider.GetComponent<Unit>();
+                if (targetUnit != null)
+                {
+                    targetUnit.TakeDamage(unit.unitData.Damage);
+                }
             }
         }
     }
