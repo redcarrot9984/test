@@ -1,10 +1,7 @@
-// AudioManager.cs (新規作成)
-
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // シングルトンパターン：どこからでも簡単にアクセスできるようにする
     public static AudioManager Instance { get; private set; }
 
     [Header("オーディオソース")]
@@ -14,9 +11,13 @@ public class AudioManager : MonoBehaviour
     [Tooltip("SE再生用のAudioSource")]
     public AudioSource seSource;
 
+    [Header("音量設定")]
+    [Tooltip("SEの全体音量")]
+    [Range(0f, 1f)]
+    public float seVolume = 1.0f;
+
     private void Awake()
     {
-        // シングルトンの設定
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -24,31 +25,35 @@ public class AudioManager : MonoBehaviour
         else
         {
             Instance = this;
-            // シーンをまたいでもAudioManagerが破壊されないようにする
             DontDestroyOnLoad(gameObject);
         }
     }
 
-    /// <summary>
-    /// BGMを再生する
-    /// </summary>
     public void PlayBGM(AudioClip clip)
     {
         if (clip == null || bgmSource == null) return;
 
         bgmSource.clip = clip;
-        bgmSource.loop = true; // BGMはループ再生
+        bgmSource.loop = true;
         bgmSource.Play();
     }
-
+    
+    // ▼▼▼ このメソッドがエラーの原因です。正しく追加してください ▼▼▼
     /// <summary>
-    /// SEを再生する（重複再生可能）
+    /// BGMの再生を停止する
     /// </summary>
+    public void StopBGM()
+    {
+        if (bgmSource != null)
+        {
+            bgmSource.Stop();
+        }
+    }
+
     public void PlaySE(AudioClip clip)
     {
         if (clip == null || seSource == null) return;
-
-        // PlayOneShotを使うことで、SEが重なって再生される
-        seSource.PlayOneShot(clip);
+        
+        seSource.PlayOneShot(clip, seVolume);
     }
 }

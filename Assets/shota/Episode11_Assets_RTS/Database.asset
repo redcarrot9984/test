@@ -502,11 +502,11 @@ MonoBehaviour:
     <MoveSpeed>k__BackingField: 2
     <MaxHealth>k__BackingField: 3000
     <Damage>k__BackingField: 90
-    <AttackRange>k__BackingField: 5
+    <AttackRange>k__BackingField: 3
     <AttackRate>k__BackingField: 0.1
-    <SensorRange>k__BackingField: 5
+    <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 1
-    <AreaOfEffectRadius>k__BackingField: 5
+    <AreaOfEffectRadius>k__BackingField: 3
     <productionTime>k__BackingField: 0

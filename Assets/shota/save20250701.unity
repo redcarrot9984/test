@@ -1895,7 +1895,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.793
+  m_Volume: 0.411
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 399515595}
   seSource: {fileID: 399515594}
+  seVolume: 0.381
 --- !u!4 &399515597
 Transform:
   m_ObjectHideFlags: 0
@@ -3796,6 +3797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameBGM: {fileID: 8300000, guid: 5010b122df3397f4fa56ecb4888df20b, type: 3}
+  gameClearSE: {fileID: 8300000, guid: 741d4f15f76d8b440a8180f722de07f4, type: 3}
+  gameOverSE: {fileID: 8300000, guid: 565065ee24ad2b143a13f6ec50fd63cf, type: 3}
+  stopBgmOnEnd: 1
   gameOverPanel: {fileID: 1537439176}
   gameClearPanel: {fileID: 608310117}
   waveManager: {fileID: 925082875}
@@ -3913,28 +3917,14 @@ MonoBehaviour:
   - waveName: P2
     enemyGroups:
     - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
-      enemyCount: 5
-      spawnInterval: 1
+      enemyCount: 10
+      spawnInterval: 0.5
     - enemyPrefab: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
       enemyCount: 3
-      spawnInterval: 2
+      spawnInterval: 0.5
     - enemyPrefab: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
       enemyCount: 2
-      spawnInterval: 3
-  - waveName: P3
-    enemyGroups:
-    - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
-      enemyCount: 10
-      spawnInterval: 0
-    - enemyPrefab: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
-      enemyCount: 10
-      spawnInterval: 2
-    - enemyPrefab: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
-      enemyCount: 5
-      spawnInterval: 3
-    - enemyPrefab: {fileID: 3609754740509665741, guid: 9e83deee06122574caecce41d29c43c9, type: 3}
-      enemyCount: 1
-      spawnInterval: 2
+      spawnInterval: 0.5
   - waveName: P3
     enemyGroups:
     - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
@@ -3942,13 +3932,30 @@ MonoBehaviour:
       spawnInterval: 0
     - enemyPrefab: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
       enemyCount: 10
-      spawnInterval: 0
+      spawnInterval: 0.5
     - enemyPrefab: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
       enemyCount: 5
-      spawnInterval: 1
+      spawnInterval: 0.5
+    - enemyPrefab: {fileID: 3609754740509665741, guid: 9e83deee06122574caecce41d29c43c9, type: 3}
+      enemyCount: 1
+      spawnInterval: 0.5
+  - waveName: P4
+    enemyGroups:
+    - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
+      enemyCount: 25
+      spawnInterval: 0
+    - enemyPrefab: {fileID: 3609754740509665741, guid: ec86582af5647a644b326f96ca5cbafa, type: 3}
+      enemyCount: 15
+      spawnInterval: 0.5
+    - enemyPrefab: {fileID: 3609754740509665741, guid: d7f341b802d33d54aa5328ee6aeb8a41, type: 3}
+      enemyCount: 5
+      spawnInterval: 0.5
     - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
       enemyCount: 1
-      spawnInterval: 5
+      spawnInterval: 1
+    - enemyPrefab: {fileID: 3609754740509665741, guid: 9e83deee06122574caecce41d29c43c9, type: 3}
+      enemyCount: 5
+      spawnInterval: 0.5
   lunaticWaves:
   - waveName: P1
     enemyGroups:
@@ -4107,8 +4114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.058308978, y: 0.92700005}
   m_AnchorMax: {x: 0.9506524, y: 0.97322065}
-  m_AnchoredPosition: {x: 7, y: -20.739}
-  m_SizeDelta: {x: 114.62012, y: 47.82352}
+  m_AnchoredPosition: {x: 1.7056, y: -21.4117}
+  m_SizeDelta: {x: 176.11, y: 79.1033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981019839
 MonoBehaviour:

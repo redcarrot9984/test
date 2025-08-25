@@ -1,5 +1,3 @@
-// GameManager.cs (全体を書き換え)
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,17 +7,23 @@ public class GameManager : MonoBehaviour
 
     [Header("サウンド設定")]
     public AudioClip inGameBGM;
+    [Tooltip("ゲームクリア時に再生するSE")]
+    public AudioClip gameClearSE;
+    [Tooltip("ゲームオーバー時に再生するSE")]
+    public AudioClip gameOverSE;
+    
+    // ★★ この行を追加 ★★
+    [Tooltip("ゲーム終了時にBGMを停止するかどうか")]
+    public bool stopBgmOnEnd = true;
 
     [Header("ゲーム設定")]
     public GameObject gameOverPanel;
     public GameObject gameClearPanel;
     public WaveManager waveManager;
     
-    // ★★ ここから追加 ★★
     [Header("ポーズメニュー")]
-    public GameObject pauseMenuPanel; // インスペクターからポーズメニューのUIパネルをここに割り当てる
+    public GameObject pauseMenuPanel;
     private bool isPaused = false;
-    // ★★ ここまで追加 ★★
     
     private Transform castleTransform;
 
@@ -35,10 +39,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ★★ Updateメソッドを追加 ★★
     private void Update()
     {
-        // Escapeキーが押されたらポーズメニューをトグル表示する
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -87,7 +89,19 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
         Time.timeScale = 0f;
+
+        if (AudioManager.Instance != null)
+        {
+            // ▼▼▼ この部分を修正 ▼▼▼
+            // stopBgmOnEndがtrueの場合のみBGMを停止する
+            if (stopBgmOnEnd)
+            {
+                AudioManager.Instance.StopBGM();
+            }
+            AudioManager.Instance.PlaySE(gameOverSE);
+        }
     }
+    
     public void GameClear()
     {
         if (gameClearPanel != null)
@@ -95,6 +109,17 @@ public class GameManager : MonoBehaviour
             gameClearPanel.SetActive(true);
         }
         Time.timeScale = 0f;
+        
+        if (AudioManager.Instance != null)
+        {
+            // ▼▼▼ この部分を修正 ▼▼▼
+            // stopBgmOnEndがtrueの場合のみBGMを停止する
+            if (stopBgmOnEnd)
+            {
+                AudioManager.Instance.StopBGM();
+            }
+            AudioManager.Instance.PlaySE(gameClearSE);
+        }
     }
 
     public void RestartGame()
@@ -108,11 +133,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TitleScene"); 
     }
     
-    // ★★ ここから新しいメソッドを追加 ★★
-
-    /// <summary>
-    /// ゲームを再開する（UIボタンから呼び出す）
-    /// </summary>
     public void ResumeGame()
     {
         if (isPaused)
@@ -121,16 +141,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ポーズ状態を切り替える
-    /// </summary>
     private void TogglePause()
     {
         isPaused = !isPaused;
 
         if (isPaused)
         {
-            // ゲームをポーズ
             Time.timeScale = 0f;
             if (pauseMenuPanel != null)
             {
@@ -139,7 +155,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // ゲームを再開
             Time.timeScale = 1f;
             if (pauseMenuPanel != null)
             {
@@ -147,5 +162,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    // ★★ ここまで追加 ★★
 }
