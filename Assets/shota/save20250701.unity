@@ -2363,7 +2363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.058308978, y: 0.92700005}
   m_AnchorMax: {x: 0.9506524, y: 0.97322065}
-  m_AnchoredPosition: {x: -1.0003052, y: -2.999878}
+  m_AnchoredPosition: {x: -1.0002441, y: -2.999878}
   m_SizeDelta: {x: 0.000015258789, y: -0.0000076293945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &487154932
@@ -2664,7 +2664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.408997, y: -6.2539997}
+  m_AnchoredPosition: {x: -14.408936, y: -6.253998}
   m_SizeDelta: {x: -28.819, y: -20.514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522824452
@@ -3849,9 +3849,6 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
       enemyCount: 3
       spawnInterval: 5
-    - enemyPrefab: {fileID: 4959282328751320126, guid: 340eaac1b4eb09a44815d9cbca8fd863, type: 3}
-      enemyCount: 3
-      spawnInterval: 0
   - waveName: P2
     enemyGroups:
     - enemyPrefab: {fileID: 3609754740509665741, guid: ee483c4315fe2314394b5a181b592003, type: 3}
@@ -4033,6 +4030,11 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
       enemyCount: 3
       spawnInterval: 10
+  - waveName: P6
+    enemyGroups:
+    - enemyPrefab: {fileID: 4959282328751320126, guid: 340eaac1b4eb09a44815d9cbca8fd863, type: 3}
+      enemyCount: 1
+      spawnInterval: 0
   timeBetweenWaves: 20
   nextWaveCountdownText: {fileID: 981019839}
   spawnRadius: 50
@@ -4388,7 +4390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.07222398}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -8.179016, y: -7.0933}
+  m_AnchoredPosition: {x: -8.178955, y: -7.0933}
   m_SizeDelta: {x: -28.2, y: -12.312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999442738
@@ -6412,7 +6414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.10759656, y: 0.030632352}
   m_AnchorMax: {x: 0.8744807, y: 0.64251477}
-  m_AnchoredPosition: {x: 13.255, y: 195.467}
+  m_AnchoredPosition: {x: 13.254883, y: 195.46701}
   m_SizeDelta: {x: 344.81, y: 425.837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1771942110
