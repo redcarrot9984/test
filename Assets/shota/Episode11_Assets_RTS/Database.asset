@@ -217,7 +217,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 0}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 10
-    <productionTime>k__BackingField: 0
+    <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u69CD\u3058\u3044\u3058"
     <ID>k__BackingField: 102
     <thisBuildingType>k__BackingField: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 0
+    <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u6843\u3070\u3041\u3070"
     <ID>k__BackingField: 103
     <thisBuildingType>k__BackingField: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
     <ProjectilePrefab>k__BackingField: {fileID: 3279400468594914085, guid: 5a427d75395bb4b4cb1b7adb56565ba4, type: 3}
     <IsAreaOfEffect>k__BackingField: 0
     <AreaOfEffectRadius>k__BackingField: 2
-    <productionTime>k__BackingField: 0
+    <productionTime>k__BackingField: 1
   - <Name>k__BackingField: "\u6843\u592A\u90CE"
     <ID>k__BackingField: 104
     <thisBuildingType>k__BackingField: 0
@@ -504,6 +504,35 @@ MonoBehaviour:
     <Damage>k__BackingField: 90
     <AttackRange>k__BackingField: 3
     <AttackRate>k__BackingField: 0.1
+    <SensorRange>k__BackingField: 20
+    <IsRanged>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <IsAreaOfEffect>k__BackingField: 1
+    <AreaOfEffectRadius>k__BackingField: 3
+    <productionTime>k__BackingField: 0
+  - <Name>k__BackingField: "\u9B3C LunaticBoss"
+    <ID>k__BackingField: 208
+    <thisBuildingType>k__BackingField: 0
+    <TooltipDescription>k__BackingField: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <resourceRequirements>k__BackingField:
+    - resource: 0
+      amount: 30
+    - resource: 3
+      amount: 30
+    <buildDependency>k__BackingField: 
+    <benefits>k__BackingField: []
+    <IsUnit>k__BackingField: 1
+    <UnitPrefab>k__BackingField: {fileID: 4959282328751320126, guid: 340eaac1b4eb09a44815d9cbca8fd863, type: 3}
+    <PlacementSound>k__BackingField: {fileID: 0}
+    <AttackSound>k__BackingField: {fileID: 8300000, guid: 75bc60fce3b36454fb5578a42c080e5b, type: 3}
+    <producingBuilding>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 2
+    <MaxHealth>k__BackingField: 8000
+    <Damage>k__BackingField: 40
+    <AttackRange>k__BackingField: 3
+    <AttackRate>k__BackingField: 3
     <SensorRange>k__BackingField: 20
     <IsRanged>k__BackingField: 0
     <ProjectilePrefab>k__BackingField: {fileID: 0}
