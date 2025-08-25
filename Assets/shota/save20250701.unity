@@ -4056,7 +4056,7 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 3609754740509665741, guid: 826fc5baba2dec04695df14956e36c89, type: 3}
       enemyCount: 30
       spawnInterval: 0
-  timeBetweenWaves: 1
+  timeBetweenWaves: 20
   nextWaveCountdownText: {fileID: 981019839}
   spawnRadius: 50
 --- !u!1 &937021607
